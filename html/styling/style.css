@@ -1,0 +1,80 @@
+/* Header Styling */
+
+:root {
+    --header-background-color: #ff69b4;
+    --text-color: white;
+    --button-background-color: yellow; /* Yellow */
+    --button-text-color: black;
+}
+
+.logo img {
+    width: 360px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+header {
+    background-color: var(--header-background-color);
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    margin-right: -80px; /* Add margin to separate logo from other content */
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile button {
+    font-size: 14px;
+    background-color: yellow;
+    color: black;
+    border: 1px solid yellow;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.profile button:hover {
+    background-color: var(--text-color);
+    color: var(--header-background-color);
+}
+
+.top-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    flex: 1; /* Take up remaining space */
+    flex-direction: column; /* Align children vertically */
+}
+
+.top-text {
+    margin-bottom: 10px; /* Add space between top-text and buttons */
+    text-align: center; /* Center text */
+}
+
+.top-text span {
+    margin-right: 10px; /* Spacing between text elements */
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.buttons button {
+    padding: 16px 64px;
+    margin: 0 32px; 
+    font-size: 14px; /* Adjust font size to make buttons the same size */
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
