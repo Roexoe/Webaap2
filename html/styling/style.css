@@ -1,15 +1,22 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Header Styling */
 
 :root {
-    --header-background-color: #ff69b4;
+    --header-background-color: #FF007F;
     --text-color: white;
-    --button-background-color: yellow; /* Yellow */
+    --button-background-color: yellow;
     --button-text-color: black;
 }
 
-.logo img {
-    width: 360px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+body, html {
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -19,10 +26,16 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
+    border: none;
 }
 
 .logo {
-    margin-right: -80px; /* Add margin to separate logo from other content */
+    margin-right: -80px; /* Adjust margin as needed */
+}
+
+.logo img {
+    width: 360px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .profile {
