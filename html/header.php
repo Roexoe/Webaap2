@@ -9,7 +9,9 @@
 <body>
     <header>
         <div class="logo">
-            <img src="img/k3 Logo black.png" alt="Reislogo">
+        <a href="index.php">
+                <img src="img/k3 Logo black.png" alt="Reislogo">
+            </a>
         </div>
         <div class="top-content">
             <div class="top-text">
@@ -25,7 +27,7 @@
         </div>
         <div class="profile">
             <!-- Insert profile image or icon here -->
-            <button>Login</button>
+            <button type="button" onclick="location.href='inlog.php';">Login</button>
         </div>
     </header>
 </body>

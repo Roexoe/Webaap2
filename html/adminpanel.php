@@ -1,3 +1,8 @@
+<?php
+ 
+include_once("header.php");
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
