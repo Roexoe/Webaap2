@@ -15,6 +15,12 @@ session_start();
 </head>
 <body>
 
+<?php include 'cookie.php'; ?>
+
+<!-- Include the JavaScript file -->
+<script src="cookie.js"></script>
+
+
 <form name="login" action="inlog.php" method="post">
     <div>
     <input type="text" name="username" placeholder="username">
