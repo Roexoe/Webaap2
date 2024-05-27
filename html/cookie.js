@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     acceptButton.addEventListener("click", function() {
         hideCookiePopup();
         // Stel de timer in om de popup elke 2 minuten opnieuw te tonen
-        setTimeout(showCookiePopup, 30000); // 120000 milliseconden = 2 minuten
+        setTimeout(showCookiePopup, 3000); // 120000 milliseconden = 2 minuten
     });
 
     // Toon de popup wanneer de pagina geladen is

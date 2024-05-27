@@ -32,6 +32,7 @@ session_start();
     <div>
 </form>
 
+
 <?php
 
 if (isset($_POST['inloggen'])) {
@@ -57,7 +58,7 @@ if (isset($_POST['inloggen'])) {
             echo "Invalid username or password";
         }
     } else {
-        echo "Please enter both username and password";
+        echo "Please enter both username and password"; 
     }
 }
 
@@ -65,5 +66,6 @@ if (isset($_POST['inloggen'])) {
 ob_end_flush();
 ?>
 
+<p> <a href="register.php">Ik heb nog geen account.</a> </p>
 </body>
 </html>
