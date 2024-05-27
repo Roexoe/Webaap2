@@ -3,8 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'LaRezolt', sans-serif;
 }
-
+@font-face {
+    font-family: 'LaRezolt';
+    src: url('LA\ REZOLT\ Trial.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 /* Header Styling */
 
 :root {
@@ -44,18 +50,48 @@ header {
 }
 
 .profile button {
-    font-size: 14px;
-    background-color: yellow;
-    color: black;
-    border: 1px solid yellow;
-    border-radius: 4px;
-    cursor: pointer;
+display: inline-block;
+outline: 0;
+cursor: pointer;
+border: none;
+padding: 0 56px;
+height: 45px;
+line-height: 45px;
+border-radius: 7px;
+background-color: var(--button-background-color);
+color: var(--button-text-color);
+font-weight: 400;
+font-size: 16px;
+box-shadow: 0 4px 14px 0 rgba(229, 218, 2, 0.885);
+transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
 }
 
 .profile button:hover {
-    background-color: var(--text-color);
-    color: var(--header-background-color);
+    background: rgba(229, 218, 2, 0.9);
+    box-shadow: 0 6px 20px rgba(229, 218  0.885 / 23%);
 }
+.buttons button {
+    margin: 10px;
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    padding: 0 56px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 7px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    font-weight: 400;
+    font-size: 16px;
+    box-shadow: 0 4px 14px 0 rgba(229, 218, 2, 0.885);
+    transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
+    }
+    
+    .profile button:hover {
+        background: rgba(229, 218, 2, 0.9);
+        box-shadow: 0 6px 20px rgba(229, 218  0.885 / 23%);
+    }
 
 .top-content {
     display: flex;
@@ -80,18 +116,6 @@ header {
     display: flex;
     align-items: center;
 }
-
-.buttons button {
-    padding: 16px 64px;
-    margin: 0 32px; 
-    font-size: 14px; /* Adjust font size to make buttons the same size */
-    background-color: var(--button-background-color);
-    color: var(--button-text-color);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
 /* Cookie Popup hihi */
 body {
     font-family: Arial, sans-serif;

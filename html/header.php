@@ -26,7 +26,6 @@
             </div>
         </div>
         <div class="profile">
-            <!-- Insert profile image or icon here -->
             <button type="button" onclick="location.href='inlog.php';">Login</button>
         </div>
     </header>
