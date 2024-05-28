@@ -1,12 +1,38 @@
 <?php
-ob_start(); 
+ob_start();
 include_once("header.php");
-
 session_start();
+require_once 'connection.php';
 
+$login_error = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['inloggen'])) {
+    $gebruikersnaam = $_POST['username'];
+    $wachtwoord = $_POST['password'];
+
+    try {
+        $sql = "SELECT * FROM Klanteninformatie WHERE Gebruikersnaam = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$gebruikersnaam]);
+        $user = $stmt->fetch();
+
+        if ($user && $wachtwoord === $user['Wachtwoord']) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['Gebruikersnaam'];
+            header('Location: index.php');
+            exit();
+        } else {
+            $login_error = "Ongeldige gebruikersnaam of wachtwoord.";
+        }
+    } catch (PDOException $e) {
+        echo "Fout: " . $e->getMessage();
+    }
+}
+
+ob_end_flush();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,51 +46,22 @@ session_start();
 <!-- Include the JavaScript file -->
 <script src="cookie.js"></script>
 
-
 <form name="login" action="inlog.php" method="post">
     <div>
-    <input type="text" name="username" placeholder="username">
-</div>
-<div>
-    <input type="password" name="password" placeholder="password">
-    <div class="header-options">
-    <input type="submit" name="inloggen" value="Inloggen">
+        <input type="text" name="username" placeholder="Gebruikersnaam" required>
+    </div>
     <div>
+        <input type="password" name="password" placeholder="Wachtwoord" required>
+    </div>
+    <div class="header-options">
+        <input type="submit" name="inloggen" value="Inloggen">
+    </div>
+    <?php if ($login_error): ?>
+        <div style="color: red;">
+            <?php echo $login_error; ?>
+        </div>
+    <?php endif; ?>
 </form>
-
-
-<?php
-
-if (isset($_POST['inloggen'])) {
-    // Check if the username and password are set
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        // Replace 'your_username' and 'your_password' with the actual username and password you want to check
-        $valid_username = 'Admin';
-        $valid_password = 'Admin@';
-
-        // Retrieve the submitted username and password
-        $submitted_username = $_POST['username'];
-        $submitted_password = $_POST['password'];
-
-        // Check if the submitted username and password match the valid ones
-        if ($submitted_username === $valid_username && $submitted_password === $valid_password) {
-            // Set a session variable to indicate that the user is logged in
-            $_SESSION['username'] = $submitted_username;
-            echo "Login successful!";
-            // Redirect to admin.php
-            header('Location: adminpanel.php');
-            exit;
-        } else {
-            echo "Invalid username or password";
-        }
-    } else {
-        echo "Please enter both username and password"; 
-    }
-}
-
-// Send the buffered output to the browser
-ob_end_flush();
-?>
 
 <p> <a href="register.php">Ik heb nog geen account.</a> </p>
 </body>
