@@ -21,6 +21,5 @@
             <button type="submit">Registreer</button>
         </div>
     </form>
-    
 </body>
 </html>
