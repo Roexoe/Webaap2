@@ -27,7 +27,7 @@ body, html {
 
 header {
     background-color: var(--header-background-color);
-    height: 180px;
+    height: 210px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,6 +72,7 @@ transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
 }
 .buttons button {
     margin: 10px;
+    margin-right: 100px;
     display: inline-block;
     outline: 0;
     cursor: pointer;
@@ -102,14 +103,13 @@ transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
 }
 
 .top-text {
-    margin-bottom: 10px; /* Add space between top-text and buttons */
     text-align: center; /* Center text */
-}
-
-.top-text span {
-    margin-right: 10px; /* Spacing between text elements */
-    font-size: 14px;
+    margin: 20px;
+    font-size: 30px;
     color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+    text-shadow: 4px 1px 2px rgba(121, 121, 121, 1);
 }
 
 .buttons {
@@ -154,4 +154,8 @@ body {
 
 .cookie-popup button:hover {
     background-color: #45a049;
+}
+
+span {
+
 }
