@@ -6,8 +6,8 @@
 <body>
     <form action="register.php" method="post">
         <div>
-            <label>Gebruikersnaam:</label>
-            <input type="text" name="username" required>
+            <label>Voornaam:</label>
+            <input type="text" name="Voornaam" required>
         </div>
         <div>
             <label>Email:</label>
