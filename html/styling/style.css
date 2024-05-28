@@ -23,6 +23,10 @@
 body, html {
     margin: 0;
     padding: 0;
+    background-color: #00CC00;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 header {
@@ -155,7 +159,18 @@ body {
 .cookie-popup button:hover {
     background-color: #45a049;
 }
+.hoofdkantoor {
+    width: 200px;
+    height: 130px;
+}
 
-span {
-
+.tekstblok {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tekst {
+    width: 800px;
+    margin-top: 20px;
 }
