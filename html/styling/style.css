@@ -156,6 +156,63 @@ body {
     background-color: #45a049;
 }
 
-span {
-
-}
+/* Reis card styles */
+.reisblok {
+    width: 400px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .reisblok {
+      width: calc(100% - 40px); /* Maak de breedte 100% minus de padding om de reisblokken volledig te laten meebewegen */
+      padding: 10px; /* Voeg padding toe om de reisblokken meer ruimte te geven */
+    }
+  }
+  
+  /* Reis card title */
+  .reisblok .reisnaam {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333333; 
+  }
+  
+  /* Reis card description */
+  .reisblok .reisomschrijving {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #5e5d5d; 
+  }
+  
+  /* Reis card land */
+  .reisblok .reisland {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #5e5d5d; 
+  }
+  
+  /* Reis card city */
+  .reisblok .reisstad {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #5e5d5d; 
+  }
+  
+  /* Reis card price */
+  .reisblok .reisprijs {
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #009900; 
+  }
+  
+  /* Reis card duration */
+  .reisblok .reistijdsduur {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #5e5d5d; 
+  }
+  
