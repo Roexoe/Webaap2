@@ -10,7 +10,7 @@
     <header>
         <div class="logo">
         <a href="index.php">
-                <img src="img/k3 Logo black.png" alt="Reislogo">
+                <img class="logo" src="img/logo-pet-jet-mini.png" alt="Reislogo">
             </a>
         </div>
         <div class="top-content">

@@ -5,28 +5,24 @@
     box-sizing: border-box;
     font-family: 'LaRezolt', sans-serif;
 }
-@font-face {
-    font-family: 'LaRezolt';
-    src: url('LA\ REZOLT\ Trial.ttf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
+
 /* Header Styling */
 
 :root {
-    --header-background-color: #FF007F;
-    --text-color: white;
-    --button-background-color: yellow;
-    --button-text-color: black;
+    --header-background-color: white;
+    --text-color: black;
+    --button-background-color: black;
+    --button-text-color: white;
 }
 
 body, html {
     margin: 0;
     padding: 0;
-    background-color: #40E0D0;
+    color: white;
+    background-color: black;
     display: flex;
     justify-content: center;
-    
+    font-family: 'Montserrat';font-size: 18px;
     flex-direction: column;
 }
 
@@ -40,12 +36,8 @@ header {
     border: none;
 }
 
-.logo {
-    margin-right: -80px; /* Adjust margin as needed */
-}
-
 .logo img {
-    width: 360px; /* Adjust the width as needed */
+    width: 200px; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
 }
 
@@ -67,12 +59,12 @@ background-color: var(--button-background-color);
 color: var(--button-text-color);
 font-weight: 400;
 font-size: 16px;
-box-shadow: 0 4px 14px 0 rgba(229, 218, 2, 0.885);
+box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.885);
 transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
 }
 
 .profile button:hover {
-    background: rgba(229, 218, 2, 0.9);
+    background: rgba(0, 0, 0, 0.9);
     box-shadow: 0 6px 20px rgba(229, 218  0.885 / 23%);
 }
 .buttons button {
@@ -90,12 +82,12 @@ transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
     color: var(--button-text-color);
     font-weight: 400;
     font-size: 16px;
-    box-shadow: 0 4px 14px 0 rgba(229, 218, 2, 0.885);
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.885);
     transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
     }
     
     .profile button:hover {
-        background: rgba(229, 218, 2, 0.9);
+        background: rgba(0, 0, 0, 0.9);
         box-shadow: 0 6px 20px rgba(229, 218  0.885 / 23%);
     }
 
@@ -114,7 +106,7 @@ transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
     color: var(--text-color);
     display: flex;
     flex-direction: row;
-    text-shadow: 4px 1px 2px rgba(121, 121, 121, 1);
+    text-shadow: 1px 1px 1px rgba(121, 121, 121, 1);
 }
 
 .buttons {
@@ -161,10 +153,10 @@ body {
     background-color: #45a049;
 }
 .hoofdkantoor {
-    width: 200px;
-    height: 130px;
+    width: 600px; 
+    height: auto; 
+    margin-top: 60px;
 }
-
 .tekstblok {
     width: 100%;
     display: flex;
@@ -174,4 +166,10 @@ body {
 .tekst {
     width: 800px;
     margin-top: 20px;
+}
+.pagina-titel {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 40px;
 }
