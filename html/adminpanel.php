@@ -15,6 +15,7 @@ include_once("header.php")
     <ul>
         <li><a href="adminpanelklanten.php">Klanten Paneel</a></li>
         <li><a href="adminpanelreizen.php">Reizen Paneel</a></li>
+        <li><a href="geboektereizen.php">Geboekte reizen</a></li>
     </ul>
 </body>
 </html>
