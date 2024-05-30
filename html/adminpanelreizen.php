@@ -8,8 +8,6 @@ include_once("header.php");
 /**
  * @var PDO $pdo
  */
-
-
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +16,12 @@ include_once("header.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Reizen</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../styling/style.css">
 </head>
 <body>
 <div>
-    <button class="button" type="button" onclick="location.href='add_reis.php';">Voeg een Reis toe</button>
-    <h1>Welkom op het admin paneel van K3 Reizen, <?php echo $username; ?>!</h1>
+    <button class="button" type="button" onclick="location.href='add.php';">Voeg een Reis toe</button>
+    <h1>Welkom op het admin paneel van K3 Reizen !</h1>
 </div>
 
 <table>
@@ -54,8 +52,8 @@ include_once("header.php");
                 . "<td>" . $result['Stad'] . "</td>"
                 . "<td>" . $result['Prijs'] . "</td>"
                 . "<td>" . $result['Tijdsduur'] . "</td>"
-                . "<td><a href='edit_reis.php?id=" . $result['id'] . "'>Bewerken</a></td>"
-                . "<td><a href='verwijder_reis.php?id=" . $result['id'] . "' onclick=\"return confirm('Weet je zeker dat je deze reis wilt verwijderen?')\">Verwijderen</a></td>"
+                . "<td><a href='edit.php?id=" . $result['id'] . "'>Bewerken</a></td>"
+                . "<td><a href='delete.php?id=" . $result['id'] . "' onclick=\"return confirm('Weet je zeker dat je deze reis wilt verwijderen?')\">Verwijderen</a></td>"
                 . "</tr>";
         }
         ?>
