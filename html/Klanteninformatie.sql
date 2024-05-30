@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 29, 2024 at 09:39 AM
+-- Generation Time: May 30, 2024 at 09:49 AM
 -- Server version: 5.7.44
 -- PHP Version: 8.2.8
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `Klanteninformatie`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Boekingen`
+--
+
+CREATE TABLE `Boekingen` (
+  `id` int(11) NOT NULL,
+  `reisID` text NOT NULL,
+  `klantID` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -43,8 +55,6 @@ CREATE TABLE `Klanteninformatie` (
 
 INSERT INTO `Klanteninformatie` (`id`, `Voornaam`, `Achternaam`, `Geboortedatum`, `Mailadres`, `Gebruikersnaam`, `Wachtwoord`) VALUES
 (1, 'Max', 'van Rooijen', '1993-09-15', 'bruh@gmail.com', 'Autisme', 'burh'),
-(2, 'e', 'gd', '2024-05-01', 'gdr', 'gdr', 'gdr'),
-(3, 'e', 'gd', '2024-05-01', 'gdr', 'gdr', 'gdr'),
 (4, 'Atusime ', 'adol', '2075-10-10', 'kanus@gmail.com', 'Burhmoemn', 'bruhmoment'),
 (5, 'Atusime ', 'adol', '2075-10-10', 'kanus@gmail.com', 'Burhmoemn', 'bruhmoment'),
 (6, 'Atusime ', 'adol', '2075-10-10', 'kanus@gmail.com', 'Burhmoemn', 'bruhmoment'),
@@ -120,13 +130,18 @@ CREATE TABLE `Reizen` (
 --
 
 INSERT INTO `Reizen` (`id`, `Reisnaam`, `Omschrijving`, `Land`, `Stad`, `Prijs`, `Tijdsduur`) VALUES
-(1, 'K3 Studio', 'Een epische reis naar K3 studio', 'Belgie', 'Bemmel', 23.5, '5 Dagen'),
-(2, 'K3 Studio', 'Een epische reis naar K3 studio', 'Belgie', 'Bemmel', 23.5, '5 Dagen'),
-(3, 'Kebab', 'Autisme', 'Duitser', 'Homborg', 155.5, '25 jaar');
+(4, 'Autisme', 'Kebabzaak om de hoek', 'Zimbabwe', 'Dodewaard', 2552, '35 Dagen'),
+(6, 'Autisme', 'hdfh', 'dfdhfd', 'fdhhfd', 24345, 'dfhhd');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `Boekingen`
+--
+ALTER TABLE `Boekingen`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `Klanteninformatie`
@@ -145,6 +160,12 @@ ALTER TABLE `Reizen`
 --
 
 --
+-- AUTO_INCREMENT for table `Boekingen`
+--
+ALTER TABLE `Boekingen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `Klanteninformatie`
 --
 ALTER TABLE `Klanteninformatie`
@@ -154,7 +175,7 @@ ALTER TABLE `Klanteninformatie`
 -- AUTO_INCREMENT for table `Reizen`
 --
 ALTER TABLE `Reizen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
