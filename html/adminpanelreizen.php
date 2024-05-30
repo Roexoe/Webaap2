@@ -15,10 +15,11 @@ include_once("header.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Reizen</title>
-    <link rel="stylesheet" type="text/css" href="../styling/style.css">
+    <title>Reizen Paneel</title>
 </head>
 <body>
+    <h1>Reizen Paneel</h1>
+    <a href="adminpanel.php">Terug naar Keuze Paneel</a>
 <div>
     <button class="button" type="button" onclick="location.href='add.php';">Voeg een Reis toe</button>
     <h1>Welkom op het admin paneel van K3 Reizen !</h1>

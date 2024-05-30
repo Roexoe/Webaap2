@@ -15,10 +15,11 @@ include_once("header.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Reizen</title>
-    <link rel="stylesheet" type="text/css" href="../styling/style.css">
+    <title>Klanten Paneel</title>
 </head>
 <body>
+    <h1>Klanten Paneel</h1>
+    <a href="adminpanel.php">Terug naar Keuze Paneel</a>
 <div>
     <h1>Welkom op het klantenpaneel van K3 Reizen!</h1>
 </div>
@@ -32,7 +33,7 @@ include_once("header.php");
             <th>Geboortedatum</th>
             <th>Mailadres</th>
             <th>Gebruikersnaam</th>
-            <th>Wachtwoord (gehasht)</th>
+            <th>Wachtwoord</th>
             <th>Verwijderen</th>
         </tr>
     </thead>
@@ -49,7 +50,7 @@ include_once("header.php");
                 . "<td>" . htmlspecialchars($result['Geboortedatum']) . "</td>"
                 . "<td>" . htmlspecialchars($result['Mailadres']) . "</td>"
                 . "<td>" . htmlspecialchars($result['Gebruikersnaam']) . "</td>"
-                . "<td>" . htmlspecialchars(password_hash($result['Wachtwoord'], PASSWORD_DEFAULT)) . "</td>"
+                . "<td>" . htmlspecialchars($result['Wachtwoord']) . "</td>"
                 . "<td><a href=\"delete.php?id=" . htmlspecialchars($result['id']) . "&source=adminpanelklanten\" onclick=\"return confirm('Weet je zeker dat je deze gebruiker wilt verwijderen?')\">Verwijderen</a></td>"
                 . "</tr>";
         }
