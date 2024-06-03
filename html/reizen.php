@@ -46,12 +46,14 @@ if (isset($_GET['query'])) {
             <?php foreach ($results as $result): ?>
                 <div class="reisblok">
                     <div class="imgblok">
-                        <div class="reisfoto"><?= htmlspecialchars($result['Reisfoto']) ?></div>
+                    <?php if (!empty($result['Foto'])): ?>
+                    <img width="100" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="Gerecht foto">
+                <?php endif; ?>
                     </div>
                     <div class="reisinfoblok">
                         <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
                         <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
-                        <div class="reisland"><?= htmlspecialchars($result['Land']) ?></div>
+                        <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
                         <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
                         <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
                         <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
