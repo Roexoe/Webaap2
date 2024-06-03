@@ -19,8 +19,8 @@ include_once("header.php");
         <button class="button">Boek nu je reis</button>
         </div>
     </div>
-    <div class="titel">Vind jouw ideale reis</div>
     <div class="ideale-reis-container">
+    <div class="titel">Vind jouw ideale reis</div>
         <div class="menu-container">
         <?php if (!empty($results)): ?>
             <?php $counter = 0; ?>

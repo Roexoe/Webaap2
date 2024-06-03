@@ -41,7 +41,7 @@ ob_end_flush();
 </head>
 <body>
 
-<?php include 'cookie.php'; ?>
+<?php include 'cookie.php';?>
 
 <!-- Include the JavaScript file -->
 <script src="cookie.js"></script>
@@ -64,5 +64,6 @@ ob_end_flush();
 </form>
 
 <p> <a href="register.php">Ik heb nog geen account.</a> </p>
+
 </body>
 </html>
