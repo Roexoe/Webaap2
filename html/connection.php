@@ -1,5 +1,4 @@
 <?php
-
 $host = '172.18.0.2';
 $db   = 'Klanteninformatie';
 $user = 'root';
@@ -13,5 +12,4 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 $pdo = new PDO($dsn, $user, $pass, $options);
-
 ?>

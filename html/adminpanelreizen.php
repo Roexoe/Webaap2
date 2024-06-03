@@ -31,7 +31,7 @@ include_once("header.php");
             <th>id</th>
             <th>Reisnaam</th>
             <th>Omschrijving</th>
-            <th>Land</th>
+            <th>Personen</th>
             <th>Stad</th>
             <th>Prijs</th>
             <th>Tijdsduur</th>
@@ -49,7 +49,7 @@ include_once("header.php");
                 . "<td>" . $result['id'] . "</td>"
                 . "<td>" . $result['Reisnaam'] . "</td>"
                 . "<td>" . $result['Omschrijving'] . "</td>"
-                . "<td>" . $result['Land'] . "</td>"
+                . "<td>" . $result['Personen'] . "</td>"
                 . "<td>" . $result['Stad'] . "</td>"
                 . "<td>" . $result['Prijs'] . "</td>"
                 . "<td>" . $result['Tijdsduur'] . "</td>"

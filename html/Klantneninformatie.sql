@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 30, 2024 at 09:49 AM
+-- Generation Time: Jun 03, 2024 at 05:52 PM
 -- Server version: 5.7.44
 -- PHP Version: 8.2.8
 
@@ -30,7 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `Boekingen` (
   `id` int(11) NOT NULL,
   `reisID` text NOT NULL,
-  `klantID` text NOT NULL
+  `klantID` text NOT NULL,
+  `Vertrekdatum` date NOT NULL,
+  `Terugkomstdatum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -119,19 +121,20 @@ CREATE TABLE `Reizen` (
   `id` int(11) NOT NULL,
   `Reisnaam` varchar(255) NOT NULL,
   `Omschrijving` text NOT NULL,
-  `Land` varchar(255) NOT NULL,
+  `Personen` varchar(255) NOT NULL,
   `Stad` varchar(255) NOT NULL,
   `Prijs` double NOT NULL,
-  `Tijdsduur` varchar(255) NOT NULL
+  `Tijdsduur` varchar(255) NOT NULL,
+  `reisfoto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Reizen`
 --
 
-INSERT INTO `Reizen` (`id`, `Reisnaam`, `Omschrijving`, `Land`, `Stad`, `Prijs`, `Tijdsduur`) VALUES
-(4, 'Autisme', 'Kebabzaak om de hoek', 'Zimbabwe', 'Dodewaard', 2552, '35 Dagen'),
-(6, 'Autisme', 'hdfh', 'dfdhfd', 'fdhhfd', 24345, 'dfhhd');
+INSERT INTO `Reizen` (`id`, `Reisnaam`, `Omschrijving`, `Personen`, `Stad`, `Prijs`, `Tijdsduur`, `reisfoto`) VALUES
+(7, 'wegsfgd', 'rzdfxg', '3 personen', 'rxdgfnhcvn', 11.5, '2024-06-12', ''),
+(8, 'gfdgdfg', 'fdgfdgfgfd', 'gfdgfdgdg', 'gfdggfdgfd', 2345, '2024-06-11', 'gffdgdf');
 
 --
 -- Indexes for dumped tables
@@ -175,7 +178,7 @@ ALTER TABLE `Klanteninformatie`
 -- AUTO_INCREMENT for table `Reizen`
 --
 ALTER TABLE `Reizen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

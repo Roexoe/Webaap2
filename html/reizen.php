@@ -10,26 +10,23 @@ include_once("header.php");
 if (isset($_GET['query'])) {
     // Zoekopdracht uitvoeren
     $query = '%' . $_GET['query'] . '%';
-    $sql = "SELECT Reisnaam, Omschrijving, Land, Stad, Prijs, Tijdsduur FROM Reizen WHERE Reisnaam LIKE :query_reisnaam OR Omschrijving LIKE :query_omschrijving OR Land LIKE :query_land OR Stad LIKE :query_stad";
+    $sql = "SELECT id, Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur FROM Reizen WHERE Reisnaam LIKE :query_reisnaam OR Omschrijving LIKE :query_omschrijving OR Personen LIKE :query_Personen OR Stad LIKE :query_stad";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':query_reisnaam', $query, PDO::PARAM_STR);
     $stmt->bindParam(':query_omschrijving', $query, PDO::PARAM_STR);
-    $stmt->bindParam(':query_land', $query, PDO::PARAM_STR);
+    $stmt->bindParam(':query_Personen', $query, PDO::PARAM_STR);
     $stmt->bindParam(':query_stad', $query, PDO::PARAM_STR);
 
-
-    $stmt->execute(); // Deze regel veroorzaakt de fout
+    $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
     // Geen zoekopdracht, haal alle reizen op
-    $sql = "SELECT Reisnaam, Omschrijving, Land, Stad, Prijs, Tijdsduur FROM Reizen";
+    $sql = "SELECT id, Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur FROM Reizen";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,10 +47,11 @@ if (isset($_GET['query'])) {
                 <div class="reisblok">
                     <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
                     <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
-                    <div class="reisland"><?= htmlspecialchars($result['Land']) ?></div>
+                    <div class="reisPersonen"><?= htmlspecialchars($result['Personen']) ?></div>
                     <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
                     <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
                     <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
+                    <a href="boek.php?id=<?= $result['id'] ?>" class="boek-knop">Boek</a>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
