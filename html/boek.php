@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!$klant) {
             // De klant bestaat niet, stuur de gebruiker door naar het registratiepagina
-            header("Location: register.php");
+            echo "<script>alert('Je hebt volgens ons systeem nog geen account. Je wordt doorverwezen naar het registratieformulier.'); window.location.href='register.php';</script>";  
             exit(); // Zorg ervoor dat het script hier stopt na de doorverwijzing
         } else {
             $klantId = $klant['id'];

@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="logo">
-        <a href="index.php">
+            <a href="index.php">
                 <img class="logo" src="img/logo-pet-jet-mini.png" alt="Reislogo">
             </a>
         </div>
@@ -20,13 +20,13 @@
                 <div><img class="check" src="img/check_green-small-icon.png" alt="CheckMark">€1600 Boekingskosten pp</div>
             </div>
             <div class="buttons">
-                <button type="buttons" onclick="location.href='reizen.php';">Reizen</button>
-                <button type="buttons" onclick="location.href='overons.php';">Over ons</button>
-                <button type="buttons" onclick="location.href='contact.php';">Contact</button>
+                <button type="button" onclick="location.href='reizen.php';">Reizen</button>
+                <button type="button" onclick="location.href='overons.php';">Over ons</button>
+                <button type="button" onclick="location.href='contact.php';">Contact</button>
             </div>
         </div>
         <div class="profile">
-            <button type="buttons" onclick="location.href='inlog.php';">Login</button>
+            <button type="button" onclick="location.href='inlog.php';">Login</button>
         </div>
     </header>
 </body>
