@@ -9,7 +9,7 @@
 /* Header Styling */
 
 :root {
-    --header-background-color: white;
+    --header-background-color: rgb(255, 116, 139);
     --text-color: black;
     --button-background-color: black;
     --button-text-color: white;
