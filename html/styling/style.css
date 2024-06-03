@@ -1,237 +1,351 @@
-/* Global Reset */
+/********** Template CSS **********/
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: 'LaRezolt', sans-serif;
 }
 
-/* Header Styling */
-
-:root {
-    --header-background-color: white;
-    --text-color: black;
-    --button-background-color: black;
-    --button-text-color: white;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
-    color: white;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    font-family: 'Montserrat';font-size: 18px;
-    flex-direction: column;
-}
-
-header {
-    background-color: var(--header-background-color);
-    height: 210px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    border: none;
-}
-
-.logo img {
-    width: 200px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-}
-
-.profile button {
-display: inline-block;
-outline: 0;
-cursor: pointer;
-border: none;
-padding: 0 56px;
-height: 45px;
-line-height: 45px;
-border-radius: 7px;
-background-color: var(--button-background-color);
-color: var(--button-text-color);
-font-weight: 400;
-font-size: 16px;
-box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.885);
-transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
-}
-
-.profile button:hover {
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 6px 20px rgba(229, 218  0.885 / 23%);
-}
-.buttons button {
-    margin: 10px;
-    margin-right: 100px;
-    display: inline-block;
-    outline: 0;
-    cursor: pointer;
-    border: none;
-    padding: 0 56px;
-    height: 45px;
-    line-height: 45px;
-    border-radius: 7px;
-    background-color: var(--button-background-color);
-    color: var(--button-text-color);
-    font-weight: 400;
-    font-size: 16px;
-    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.885);
-    transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
-    }
-    
-    .profile button:hover {
-        background: rgba(0, 0, 0, 0.9);
-        box-shadow: 0 6px 20px rgba(229, 218  0.885 / 23%);
-    }
-
-.top-content {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center horizontally */
-    flex: 1; /* Take up remaining space */
-    flex-direction: column; /* Align children vertically */
-}
-
-.top-text {
-    text-align: center; /* Center text */
-    margin: 20px;
-    font-size: 30px;
-    color: var(--text-color);
-    display: flex;
-    flex-direction: row;
-    text-shadow: 1px 1px 1px rgba(121, 121, 121, 1);
-}
-
-.buttons {
-    display: flex;
-    align-items: center;
-}
-/* Cookie Popup hihi */
 body {
     font-family: Arial, sans-serif;
-}
-.cookie-popup {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background-color: rgba(114, 252, 1, 0.8);
-    color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    height: auto;
-}
-
-.cookie-popup p {
     margin: 0;
-    padding-right: 10px;
-    flex: 1; /* Zorg ervoor dat de tekst ruimte inneemt */
+    padding: 0;
+    background-color: #E5E5E5; 
+    color: #ffff; 
+    text-decoration: none;
 }
 
-.cookie-popup button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    flex-shrink: 0; /* Voorkom dat de knop verkleint */
-}
-
-.cookie-popup button:hover {
-    background-color: #45a049;
-}
-
-/* Reis card styles */
-.reisblok {
-    width: 400px;
+.headerbox {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(255, 255, 255, 0.8); 
+    color: black;
     padding: 20px;
-    margin: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  @media only screen and (max-width: 767px) {
-    .reisblok {
-      width: calc(100% - 40px); /* Maak de breedte 100% minus de padding om de reisblokken volledig te laten meebewegen */
-      padding: 10px; /* Voeg padding toe om de reisblokken meer ruimte te geven */
-    }
-  }
-  
-  /* Reis card title */
-  .reisblok .reisnaam {
-    font-size: 30px;
-    font-weight: bold;
-    color: #333333; 
-  }
-  
-  /* Reis card description */
-  .reisblok .reisomschrijving {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #5e5d5d; 
-  }
-  
-  /* Reis card land */
-  .reisblok .reisland {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #5e5d5d; 
-  }
-  
-  /* Reis card city */
-  .reisblok .reisstad {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #5e5d5d; 
-  }
-  
-  /* Reis card price */
-  .reisblok .reisprijs {
-    margin-top: 10px;
-    font-size: 25px;
-    font-weight: bold;
-    color: #009900; 
-  }
-  
-  /* Reis card duration */
-  .reisblok .reistijdsduur {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #5e5d5d; 
-  }
-  
-
-.hoofdkantoor {
-    width: 600px; 
-    height: auto; 
-    margin-top: 60px;
-}
-.tekstblok {
+    position: fixed; 
+    top: 0;
     width: 100%;
+    z-index: 999;
+}
+.header {
+    display: flex;
+    margin-left: 30%;
+    align-items: center;
+}
+.nav-item {
+    text-decoration: none;
+    color: black;
+    margin-left: 100px;
+    font-size: 30px;
+}
+.logo {
+    height: auto;
+    width: 200px;
+}
+.pagina-titelbox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.pagina-titelbox {
+    position: relative; /* Make the parent element relative */
+  }
+  
+  .pagina-titel {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+  }
+.pagina-titel {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 40px;
+    color: rgb(240, 240, 240);
 }
+.titel {
+    font-size: 50px;
+    margin: 50px;
+    color: rgb(0, 162, 255);
+}
+.over-titel {
+  font-size: 50px;
+  margin: 50px;
+  color: rgb(255, 255, 255);
+}
+
+.titel-tekst {
+  font-size: 50px;
+  margin: 50px;
+  color: rgb(255, 255, 255);
+}
+.contact-titel{
+ margin-top: 250px;
+ font-size: 50px;
+ margin: 50px;
+ color: rgb(0, 162, 255);
+}
+
 .tekst {
-    width: 800px;
-    margin-top: 20px;
+  margin: 10px;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
 }
-.pagina-titel {
+.margin{
+  height: 70px;
+  margin: 50px;
+}
+.button {
+    background-color: rgb(0, 162, 255);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+  }
+  
+  .button:hover {
+    background-color: #3e8e41;
+  }
+  .ideale-reis-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .tekstblokblok{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  }
+
+  .contact-blok {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    font-size: 40px;
-}
+    margin: 30px;
+  }
+  .container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .text-over-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+  }
+   
+  .message {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+  }
+   
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+   
+  .form label {
+    position: relative;
+  }
+   
+  .form label .input {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 5px;
+  }
+   
+  .form label .input + span {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+   
+  .form label .input:placeholder-shown + span {
+    top: 15px;
+    font-size: 0.9em;
+  }
+   
+  .form label .input:focus + span,.form label .input:valid + span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+   
+  .form label .input:valid + span {
+    color: green;
+  }
+   
+  .input01 {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 5px;
+  }
+   
+  .form label .input01 + span {
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+   
+  .form label .input01:placeholder-shown + span {
+    top: 40px;
+    font-size: 0.9em;
+  }
+   
+  .form label .input01:focus + span,.form label .input01:valid + span {
+    top: 50px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+   
+  .form label .input01:valid + span {
+    color: green;
+  }
+   
+  .fancy {
+    background-color: transparent;
+    border: 2px solid #cacaca;
+    border-radius: 0px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 390;
+    letter-spacing: 2px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 8px 30px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+  }
+   
+  .fancy::before {
+    content: " ";
+    width: 1.7rem;
+    height: 2px;
+    background: #cacaca;
+    top: 50%;
+    left: 1.5em;
+    position: absolute;
+    transform: translateY(-50%);
+    transform: translateX(230%);
+    transform-origin: center;
+    transition: background 0.3s linear, width 0.3s linear;
+  }
+   
+  .fancy .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: lowercase;
+    text-decoration: none;
+    color: #818181;
+    transform: translateX(30%);
+  }
+   
+  .fancy .top-key {
+    height: 2px;
+    width: 1.5625rem;
+    top: -2px;
+    left: 0.625rem;
+    position: absolute;
+    background: white;
+    transition: width 0.5s ease-out, left 0.3s ease-out;
+  }
+   
+  .fancy .bottom-key-1 {
+    height: 2px;
+    width: 1.5625rem;
+    right: 1.875rem;
+    bottom: -2px;
+    position: absolute;
+    background: white;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+  }
+   
+  .fancy .bottom-key-2 {
+    height: 2px;
+    width: 0.625rem;
+    right: 0.625rem;
+    bottom: -2px;
+    position: absolute;
+    background: white;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+  }
+   
+  .fancy:hover {
+    color: white;
+    background: #cacaca;
+  }
+   
+  .fancy:hover::before {
+    width: 1.5rem;
+    background: white;
+  }
+   
+  .fancy:hover .text {
+    color: white;
+    padding-left: 1.5em;
+  }
+   
+  .fancy:hover .top-key {
+    left: -2px;
+    width: 0px;
+  }
+   
+  .fancy:hover .bottom-key-1,
+  .fancy:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+  }
+
+  .footerbox {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8); 
+  }

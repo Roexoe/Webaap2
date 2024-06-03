@@ -45,13 +45,17 @@ if (isset($_GET['query'])) {
         <?php if (!empty($results)): ?>
             <?php foreach ($results as $result): ?>
                 <div class="reisblok">
-                    <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
-                    <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
-                    <div class="reisPersonen"><?= htmlspecialchars($result['Personen']) ?></div>
-                    <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
-                    <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
-                    <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
-                    <a href="boek.php?id=<?= $result['id'] ?>" class="boek-knop">Boek</a>
+                    <div class="imgblok">
+                        <div class="reisfoto"><?= htmlspecialchars($result['Reisfoto']) ?></div>
+                    </div>
+                    <div class="reisinfoblok">
+                        <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
+                        <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
+                        <div class="reisland"><?= htmlspecialchars($result['Land']) ?></div>
+                        <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
+                        <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
+                        <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
+                    </div>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
