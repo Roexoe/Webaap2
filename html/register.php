@@ -1,6 +1,11 @@
 <?php
-require_once 'connection.php';
+include_once("connection.php");
 
+// Start output buffering
+ob_start();
+include_once("header.php");
+
+// Controleer of het formulier is ingediend
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Ontvang de POST-gegevens
     $voornaam = $_POST['Voornaam'];
@@ -15,13 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "INSERT INTO Klanteninformatie (voornaam, achternaam, geboortedatum, mailadres, gebruikersnaam, wachtwoord) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$voornaam, $achternaam, $geboortedatum, $mailadres, $gebruikersnaam, $wachtwoord]);
-        
+        // Stop output buffering en stuur de headers
+        ob_end_clean();
         header('Location: inlog.php');
-
         exit(); // Zorg ervoor dat het script stopt na het verzenden van de redirect
     } catch (PDOException $e) {
         echo "Fout: " . $e->getMessage();
     }
+} else {
+    // Stop output buffering en stuur de headers
+    ob_end_flush();
 }
 ?>
 
