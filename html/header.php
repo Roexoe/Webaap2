@@ -8,26 +8,17 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-        <a href="index.php">
-                <img class="logo" src="img/logo-pet-jet-mini.png" alt="Reislogo">
-            </a>
-        </div>
-        <div class="top-content">
-            <div class="top-text">
-                <div><img class="check" src="img/check_green-small-icon.png" alt="CheckMark">Website van het jaar 1935</div>
-                <div><img class="check" src="img/check_green-small-icon.png" alt="CheckMark">Al meer dan 206 jaar ervaring</div>
-                <div><img class="check" src="img/check_green-small-icon.png" alt="CheckMark">€1600 Boekingskosten pp</div>
+        <nav>
+            <div class="headerbox">
+                <a href="index.html"><img class="logo" src="img/logo-pet-jet.png" alt="Logo"></a>
+                <div class="header">
+                    <a class="nav-item" href="overons.php">Over ons</a>
+                    <a class="nav-item" href="reizen.php">Reizen</a>
+                    <a class="nav-item" href="contact.php">Contact</a>
+                    <a class="nav-item" href="login.php">Login</a>
+                </div>  
             </div>
-            <div class="buttons">
-                <button type="buttons" onclick="location.href='reizen.php';">Reizen</button>
-                <button type="buttons" onclick="location.href='overons.php';">Over ons</button>
-                <button type="buttons" onclick="location.href='contact.php';">Contact</button>
-            </div>
-        </div>
-        <div class="profile">
-            <button type="buttons" onclick="location.href='inlog.php';">Login</button>
-        </div>
+        </nav>
     </header>
 </body>
 </html>

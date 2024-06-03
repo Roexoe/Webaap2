@@ -10,6 +10,12 @@ include_once("header.php");
     <title>Document</title>
 </head>
 <body>
+    <div class="titel">Contact</div>
     
+    <?php
+ 
+    include_once("footer.php");
+ 
+    ?>
 </body>
 </html>
