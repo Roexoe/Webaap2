@@ -2,6 +2,10 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+// Databaseverbinding initialiseren
+include_once("connection.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +28,14 @@ if (session_status() == PHP_SESSION_NONE) {
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <a class="nav-item" href="accountinfo.php">Mijn Account</a>
                         <a class="nav-item" href="logout.php">Logout</a>
+                        <?php // Controleren of de gebruiker een admin is
+                        $stmt = $pdo->prepare("SELECT admin FROM Klanteninformatie WHERE id = ?");
+                        $stmt->execute([$_SESSION['user_id']]);
+                        $admin = $stmt->fetchColumn();
+                        if ($admin == 1): // Als de gebruiker een admin is
+                        ?>
+                            <a class="nav-item" href="adminpanel.php">Admin Panel</a>
+                        <?php endif; ?>
                     <?php else: ?>
                         <a class="nav-item" href="inlog.php">Login</a>
                     <?php endif; ?>

@@ -54,12 +54,12 @@ ob_end_flush();
     <div class="flex-column">
     <label>Email </label></div>
     <div class="inputForm">
-    <input type="text" class="input" type="password" name="password" placeholder="Wachtwoord" required>
+    <input type="text" class= "input" name="username" placeholder="Gebruikersnaam" required>
     </div>
     <div class="flex-column">
     <label>Password </label></div>
     <div class="inputForm">
-    <input type="password" class="input" placeholder="Wachtwoord">
+    <input type="password" class= "input" name="password" placeholder="Wachtwoord" required>
     </div>
     <div class="flex-row">
     
