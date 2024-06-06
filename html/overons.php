@@ -17,6 +17,8 @@ include_once("header.php");
   <img src="img/overonsoceaan.jpg" alt="Overons" class="background-image">
   <div class="text-over-image">
     <div class="tekstblokblok">
+      <div class="margin"></div>
+      <div class="margin"></div>
         <div class="tekstblok">
             <div class="over-titel">Over Ons</div>
             <div class="tekst">Welkom bij Pet Jet, dé reiswebsite voor avonturiers die hun huisdieren mee willen nemen!</div>

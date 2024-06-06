@@ -41,34 +41,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Registratie</title>
 </head>
 <body>
-    <form action="register.php" method="post">
+<div class="container">
+  <img src="img/register-img.jpg" alt="register" class="background-image">
+  <div class="text-over-image">
+    <form class="form" name="register" action="register.php" method="post">
+    <label>Register </label>
         <div>
-            <label>Voornaam:</label>
-            <input type="text" name="Voornaam" required>
+            <div class="inputForm">
+            <input type="text" class="input" placeholder="Voornaam" name="Voornaam" required>
+            </div>
         </div>
         <div>
-            <label>Achternaam:</label>
-            <input type="text" name="Achternaam" required>
+            <div class="inputForm">
+            <input type="text" class="input" placeholder="Achternaam" name="Achternaam" required>
+            </div>
         </div>
         <div>
-            <label>Geboortedatum:</label>
-            <input type="date" name="Geboortedatum" required>
+            <div class="inputForm">
+            <input type="date" class="input" placeholder="Geboortedatum" name="Geboortedatum" required>
+            </div>
         </div>
         <div>
-            <label>Mailadres:</label>
-            <input type="email" name="Mailadres" required>
+            <div class="inputForm">
+            <input type="email" class="input" placeholder="Mailadres" name="Mailadres" required>
+            </div>
         </div>
         <div>
-            <label>Gebruikersnaam:</label>
-            <input type="text" name="Gebruikersnaam" required>
+            <div class="inputForm">
+            <input type="text" class="input" placeholder="Gebruikersnaam" name="Gebruikersnaam" required>
+            </div>
         </div>
         <div>
-            <label>Wachtwoord:</label>
-            <input type="password" name="Wachtwoord" required>
+            <div class="inputForm">
+            <input type="password" class="input" placeholder="Wachtwoord" name="Wachtwoord" required>
+            </div>
         </div>
         <div>
-            <button type="submit">Registreer</button>
+        <input type="submit"class="button-submit" name="Register" value="Register">
         </div>
     </form>
+</div>
+<?php
+include_once("footer.php");
+?>
 </body>
 </html>

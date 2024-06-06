@@ -41,29 +41,45 @@ ob_end_flush();
 </head>
 <body>
 
-<?php include 'cookie.php';?>
+<!--<//?php include 'cookie.php';?>-->
 
 <!-- Include the JavaScript file -->
-<script src="cookie.js"></script>
+<!--<script src="cookie.js"></script>-->
 
-<form name="login" action="inlog.php" method="post">
-    <div>
-        <input type="text" name="username" placeholder="Gebruikersnaam" required>
+<div class="container">
+  <img src="img/inlog-img.jpg" alt="inlog" class="background-image">
+  <div class="text-over-image">
+  <div class="inlog-box">
+    <form class="form" name="login" action="inlog.php" method="post">
+    <div class="flex-column">
+    <label>Email </label></div>
+    <div class="inputForm">
+    <input type="text" class="input" type="password" name="password" placeholder="Wachtwoord" required>
     </div>
-    <div>
-        <input type="password" name="password" placeholder="Wachtwoord" required>
+    <div class="flex-column">
+    <label>Password </label></div>
+    <div class="inputForm">
+    <input type="password" class="input" placeholder="Wachtwoord">
     </div>
-    <div class="header-options">
-        <input type="submit" name="inloggen" value="Inloggen">
+    <div class="flex-row">
+    
+    <p> <a class="geen-account" href="register.php">Ik heb nog geen account.</a> </p>
+    <p> <a class="geen-account" href="vergeten.php">Wachtwoord vergeten.</a> </p>
     </div>
+    <input type="submit" class="button-submit" name="inloggen" value="Inloggen">
     <?php if ($login_error): ?>
         <div style="color: red;">
             <?php echo $login_error; ?>
         </div>
     <?php endif; ?>
-</form>
+    </form>
+</div>
+</div>
+</div>
+<?php
+include_once("footer.php");
+?>
 
-<p><a href="register.php">Ik heb nog geen account.</a></p>
 
 </body>
 </html>

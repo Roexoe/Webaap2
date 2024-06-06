@@ -40,6 +40,7 @@ if (isset($_GET['query'])) {
     <title>Reizen</title>
 </head>
 <body>
+<div class="reizenblok">
     <form action="reizen.php" method="get">
         <input type="text" name="query" placeholder="Zoek een reis...">
         <input type="submit" value="Zoek">
@@ -61,12 +62,14 @@ if (isset($_GET['query'])) {
             <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
             <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
             <a href="boek.php?id=<?= htmlspecialchars($result['id']) ?>" class="boek-knop">Boek nu</a>
-        </div>
-    </div>
-<?php endforeach; ?>
+         </div>
+      </div>
+  <?php endforeach; ?>
+
         <?php else: ?>
             <p>Geen reizen gevonden.</p>
         <?php endif; ?>
     </div>
+</div>
 </body>
 </html>
