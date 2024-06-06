@@ -1,8 +1,8 @@
 <?php
+session_start();
 ob_start();
 include_once("header.php");
-session_start();
-require_once 'connection.php';
+require_once ("connection.php");
 
 $login_error = '';
 
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['inloggen'])) {
         $stmt->execute([$gebruikersnaam]);
         $user = $stmt->fetch();
 
-        if ($user && $wachtwoord === $user['Wachtwoord']) {
+        if ($user && $wachtwoord === $user['Wachtwoord']) {  // Voor productie, gebruik wachtwoord hashing en verificatie
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['Gebruikersnaam'];
             header('Location: index.php');
@@ -79,6 +79,7 @@ ob_end_flush();
 <?php
 include_once("footer.php");
 ?>
+
 
 </body>
 </html>
