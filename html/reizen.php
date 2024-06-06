@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+
 include_once("connection.php");
 include_once("header.php");
 
@@ -44,22 +47,23 @@ if (isset($_GET['query'])) {
     <div class="menu-container">
         <?php if (!empty($results)): ?>
             <?php foreach ($results as $result): ?>
-                <div class="reisblok">
-                    <div class="imgblok">
-                    <?php if (!empty($result['Foto'])): ?>
-                    <img width="100" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="Gerecht foto">
-                <?php endif; ?>
-                    </div>
-                    <div class="reisinfoblok">
-                        <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
-                        <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
-                        <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
-                        <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
-                        <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
-                        <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+    <div class="reisblok">
+        <div class="imgblok">
+            <?php if (!empty($result['Foto'])): ?>
+                <img width="100" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="Gerecht foto">
+            <?php endif; ?>
+        </div>
+        <div class="reisinfoblok">
+            <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
+            <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
+            <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
+            <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
+            <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
+            <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
+            <a href="boek.php?id=<?= htmlspecialchars($result['id']) ?>" class="boek-knop">Boek nu</a>
+        </div>
+    </div>
+<?php endforeach; ?>
         <?php else: ?>
             <p>Geen reizen gevonden.</p>
         <?php endif; ?>

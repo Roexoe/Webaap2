@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
 ob_start();
 include_once('connection.php'); // Zorg ervoor dat het pad correct is naar je PDO-verbinding bestand
 

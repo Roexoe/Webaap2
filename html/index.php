@@ -1,8 +1,9 @@
-<!-- index.php -->
 <?php
+session_start();
 include_once("connection.php");
 include_once("header.php");
-
+?>
+<?php
 // Query om reizen op te halen
 $sql = "SELECT * FROM Reizen"; // Tabelnaam aanpassen
 $stmt = $pdo->query($sql);
