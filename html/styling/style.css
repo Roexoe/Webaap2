@@ -187,7 +187,37 @@ body {
     text-align: center;
     color: white;
   }
-
+  .panel-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+  .table-head {
+    color: black;
+    font-size: 24px;
+  }
+  .button-submit-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    background-color: #151717;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+   }
+   .button-submit-panel:hover {
+    background-color: #252727;
+   }
   .inlog-box {
     width: 100%;
     display: flex;

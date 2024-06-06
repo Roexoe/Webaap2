@@ -19,25 +19,28 @@ include_once("header.php");
     <title>Klanten Paneel</title>
 </head>
 <body>
+    <div class="margin"></div>
+    <div class="margin"></div>
     <h1>Klanten Paneel</h1>
     <a href="adminpanel.php">Terug naar Keuze Paneel</a>
 <div>
-    <h1>Welkom op het klantenpaneel van K3 Reizen!</h1>
+    <div class="titel">Welkom op het klantenpaneel van PetJet!</div>
 </div>
-
-<table>
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Voornaam</th>
-            <th>Achternaam</th>
-            <th>Geboortedatum</th>
-            <th>Mailadres</th>
-            <th>Gebruikersnaam</th>
-            <th>Wachtwoord</th>
-            <th>Verwijderen</th>
-        </tr>
-    </thead>
+<div class="reisblok">
+    <table>
+        <thead class="table-row">
+            <tr>
+                <th class="table-head">id</th>
+                <th class="table-head">Voornaam</th>
+                <th class="table-head">Achternaam</th>
+                <th class="table-head">Geboortedatum</th>
+                <th class="table-head">Mailadres</th>
+                <th class="table-head">Gebruikersnaam</th>
+                <th class="table-head">Wachtwoord</th>
+                <th class="table-head">Verwijderen</th>
+            </tr>
+        </thead>
+</div>
     <tbody>
         <?php
         $sql = "SELECT * FROM Klanteninformatie"; // Ensure this is the correct table name

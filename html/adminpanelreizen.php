@@ -20,6 +20,8 @@ include_once("header.php");
     <title>Reizen Paneel</title>
 </head>
 <body>
+    <div class="margin"></div>
+    <div class="margin"></div>
     <h1>Reizen Paneel</h1>
     <a href="adminpanel.php">Terug naar Keuze Paneel</a>
 <div>
