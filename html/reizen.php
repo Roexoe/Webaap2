@@ -37,6 +37,7 @@ if (isset($_GET['query'])) {
     <title>Reizen</title>
 </head>
 <body>
+<div class="reizenblok">
     <form action="reizen.php" method="get">
         <input type="text" name="query" placeholder="Zoek een reis...">
         <input type="submit" value="Zoek">
@@ -46,15 +47,17 @@ if (isset($_GET['query'])) {
             <?php foreach ($results as $result): ?>
                 <div class="reisblok">
                     <div class="imgblok">
-                        <div class="reisfoto"><?= htmlspecialchars($result['Reisfoto']) ?></div>
+                    <?php if (!empty($result['Foto'])): ?>
+                    <img width="300" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="foto">
+                <?php endif; ?>
                     </div>
                     <div class="reisinfoblok">
                         <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
-                        <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
-                        <div class="reisland"><?= htmlspecialchars($result['Land']) ?></div>
-                        <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
-                        <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
-                        <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
+                        <div class="reis-content"><?= htmlspecialchars($result['Omschrijving']) ?></div>
+                        <div class="reis-content"><?= htmlspecialchars($result['Personen']) ?></div>
+                        <div class="reis-content"><?= htmlspecialchars($result['Stad']) ?></div>
+                        <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?>€</div>
+                        <div class="reis-content"><?= htmlspecialchars($result['Tijdsduur']) ?>Dagen</div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -62,5 +65,6 @@ if (isset($_GET['query'])) {
             <p>Geen reizen gevonden.</p>
         <?php endif; ?>
     </div>
+</div>
 </body>
 </html>

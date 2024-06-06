@@ -18,20 +18,20 @@ if (isset($_POST['submit'])) {
     // Get the form data
     $reisnaam = $_POST['reisnaam'];
     $omschrijving = $_POST['omschrijving'];
-    $land = $_POST['land'];
+    $personen = $_POST['personen'];
     $stad = $_POST['stad'];
     $prijs = $_POST['prijs'];
     $tijdsduur = $_POST['tijdsduur'];
 
     // Prepare and execute the SQL statement
-    $sql = "INSERT INTO Reizen (Reisnaam, Omschrijving, Land, Stad, Prijs, Tijdsduur) VALUES (:reisnaam, :omschrijving, :land, :stad, :prijs, :tijdsduur)";
+    $sql = "INSERT INTO Reizen (Reisnaam, Omschrijving, personen, Stad, Prijs, Tijdsduur) VALUES (:reisnaam, :omschrijving, :personen, :stad, :prijs, :tijdsduur)";
     $stmt = $pdo->prepare($sql);
     
     // Execute the query
     if ($stmt->execute([
         ':reisnaam' => $reisnaam,
         ':omschrijving' => $omschrijving,
-        ':land' => $land,
+        ':personen' => $personen,
         ':stad' => $stad,
         ':prijs' => $prijs,
         ':tijdsduur' => $tijdsduur
@@ -52,8 +52,8 @@ if (isset($_POST['submit'])) {
     <input type="text" name="reisnaam" id="reisnaam" required><br>
     <label for="omschrijving">Omschrijving:</label>
     <textarea name="omschrijving" id="omschrijving" rows="4" cols="50" required></textarea><br>
-    <label for="land">Land:</label>
-    <input type="text" name="land" id="land" required><br>
+    <label for="personen">personen:</label>
+    <input type="text" name="personen" id="personen" required><br>
     <label for="stad">Stad:</label>
     <input type="text" name="stad" id="stad" required><br>
     <label for="prijs">Prijs:</label>
