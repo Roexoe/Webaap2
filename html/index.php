@@ -62,7 +62,7 @@ if ($stmt->rowCount() > 0) {
             <?php else: ?>
                 <p>Geen reizen gevonden.</p>
             <?php endif; ?>
-            <button class="button">Kies uw reis</button>
+            <button class="button" onclick="window.location.href='reizen.php'">Kies uw reis</button>
         </div>
     </div>
 
@@ -70,7 +70,7 @@ if ($stmt->rowCount() > 0) {
         <img src="img/contact-img.jpg" alt="oceaan">
         <div class="pagina-titel">
             Neem contact op met ons personeel
-            <button class="button">Neem contact op</button>
+            <button class="button" onclick="window.location.href='contact.php'">Neem contact op</button>
         </div>
     </div>
 

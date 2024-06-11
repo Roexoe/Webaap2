@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['inloggen'])) {
         if ($user && $wachtwoord === $user['Wachtwoord']) {  // Voor productie, gebruik wachtwoord hashing en verificatie
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['Gebruikersnaam'];
+            $_SESSION['admin'] = $user['admin'];
             header('Location: index.php');
             exit();
         } else {

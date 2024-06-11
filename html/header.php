@@ -2,10 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
 // Databaseverbinding initialiseren
 include_once("connection.php");
-
 ?>
 
 <!DOCTYPE html>
