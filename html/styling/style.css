@@ -232,6 +232,32 @@ body {
     color: black;
     font-size: large;
   }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+  border: 1px solid #ddd;
+    color:black;
+    border: 1px solid #ddd; /* light gray border */
+    padding: 10px;
+    text-align: left;
+}
+th {
+    color: black;
+    background-color: #f7f7f7; /* light gray background */
+}
+tr:nth-child(even) {
+    color: black;
+    background-color: #f2f2f2; /* light gray background */
+}
+a {
+    text-decoration: none;
+    color: #337ab7; /* blue link color */
+}
+a:hover {
+    color: #23527c; /* darker blue link color on hover */
+}
   .form {
     display: flex;
     flex-direction: column;
@@ -262,11 +288,9 @@ body {
     transition: 0.2s ease-in-out;
    }
    .input {
-    margin-left: 10px;
-    border-radius: 10px;
-    border: none;
-    width: 85%;
-    height: 100%;
+    width: 100%;
+       border: 1px solid rgba(105, 105, 105, 0.397);
+       border-radius: 5px;
    }
    .input:focus {
     outline: none;
@@ -351,6 +375,7 @@ body {
    
   .flex {
     display: flex;
+      flex-direction: column;
     width: 100%;
     gap: 6px;
   }

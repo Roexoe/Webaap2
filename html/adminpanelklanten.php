@@ -21,23 +21,22 @@ include_once("header.php");
 <body>
     <div class="margin"></div>
     <div class="margin"></div>
-    <h1>Klanten Paneel</h1>
-    <a href="adminpanel.php">Terug naar Keuze Paneel</a>
 <div>
     <div class="titel">Welkom op het klantenpaneel van PetJet!</div>
+    <a href="adminpanel.php">Terug naar Keuze Paneel</a>
 </div>
 <div class="reisblok">
     <table>
-        <thead class="table-row">
+        <thead>
             <tr>
-                <th class="table-head">id</th>
-                <th class="table-head">Voornaam</th>
-                <th class="table-head">Achternaam</th>
-                <th class="table-head">Geboortedatum</th>
-                <th class="table-head">Mailadres</th>
-                <th class="table-head">Gebruikersnaam</th>
-                <th class="table-head">Wachtwoord</th>
-                <th class="table-head">Verwijderen</th>
+                <th>id</th>
+                <th>Voornaam</th>
+                <th>Achternaam</th>
+                <th>Geboortedatum</th>
+                <th>Mailadres</th>
+                <th>Gebruikersnaam</th>
+                <th>Wachtwoord</th>
+                <th>Verwijderen</th>
             </tr>
         </thead>
 </div>
