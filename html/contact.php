@@ -1,7 +1,26 @@
 <?php
 session_start();
 include_once("header.php");
+include_once('connection.php');
+/**
+ * @var PDO $pdo
+ */
+if(isset($_POST['submit'])) {
+    $voornaam = $_POST['Voornaam'];
+    $achternaam = $_POST['Achternaam'];
+    $email = $_POST['Email'];
+    $bericht = $_POST['Bericht'];
 
+    $sql = "INSERT INTO Contact (Voornaam, Achternaam, Email, Bericht) VALUES (:voornaam, :achternaam, :email, :bericht)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':voornaam', $voornaam);
+    $stmt->bindParam(':achternaam', $achternaam);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':bericht', $bericht);
+    $stmt->execute();
+
+    header("Location: index.php");
+}
 ?>
 <html lang="en">
 <head>
@@ -17,40 +36,33 @@ include_once("header.php");
     <div class="tekstblokblok">
     <div class="contact-titel">Contact</div>
     <div class="contact-blok">
-    <form class="form">
+    <form class="form" action="contact.php" method="post">
     <div class="flex">
-<label>
-    <input required="" placeholder="" type="text" class="input">
-    <span>first name</span>
-</label>
- 
-        <label>
-<input required="" placeholder="" type="text" class="input">
-    <span>last name</span>
-</label>
-</div>  
-<label>
-    <input required="" placeholder="" type="email" class="input">
-    <span>email</span>
-</label> 
-    <label>
-    <input required="" type="tel" placeholder="" class="input">
-    <span>contact number</span>
-</label>
-<label>
-    <textarea required="" rows="3" placeholder="" class="input01"></textarea>
-    <span>message</span>
-</label>
-<button class="fancy" href="#">
-    <span class="top-key"></span>
-    <span class="text">submit</span>
-    <span class="bottom-key-1"></span>
-    <span class="bottom-key-2"></span>
-</button>
+        <label for="Voornaam">Voornaam:</label>
+        <input class="input" type="text" name="Voornaam" id="Voornaam" required><br>
+
+        <label  for="Achternaam">Achternaam:</label>
+        <input class="input" type="text" name="Achternaam" id="Achternaam" required></input><br>
+
+        <label for="Email">Email:</label>
+        <input class="input" type="email" name="Email" id="Email" required><br>
+
+        <label for="Bericht">Bericht:</label>
+        <input class="input01" type="text" name="Bericht" id="Bericht" required><br>
+
+
+
+    <button class="fancy" href="#">
+        <span class="top-key"></span>
+        <span class="text"><input class="input" type="submit" name="submit" value="Opslaan" class="button"></span>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+    </button>
 </form>
     </div>
   </div>
 </div>
+    </div>
     <?php
  
     include_once("footer.php");

@@ -25,6 +25,8 @@ include_once("connection.php");
     <title>Geboekte Reizen</title>
 </head>
 <body>
+    <div class="margin"></div>
+    <div class="margin"></div>
     <h1>Geboekte Reizen</h1>
     <a href="adminpanel.php">Terug naar Keuze Paneel</a>
     <table border="1">
