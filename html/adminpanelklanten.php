@@ -1,10 +1,20 @@
 <?php
 session_start();
-?>
 
-<?php
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['user_id'])) {
+    header('Location: inlog.php');
+    exit();
+}
+
+// Controleer of de gebruiker een admin is
+if (!$_SESSION['admin']) {
+    header('Location: index.php');  // of waar je ook niet-admins wilt omleiden
+    exit();
+}
+
+include_once("header.php"); 
 include_once("connection.php");
-include_once("header.php");
 /**
  * @var PDO $pdo
  */
@@ -18,25 +28,27 @@ include_once("header.php");
     <title>Klanten Paneel</title>
 </head>
 <body>
-    <h1>Klanten Paneel</h1>
-    <a href="adminpanel.php">Terug naar Keuze Paneel</a>
+    <div class="margin"></div>
+    <div class="margin"></div>
 <div>
-    <h1>Welkom op het klantenpaneel van K3 Reizen!</h1>
+    <div class="titel">Welkom op het klantenpaneel van PetJet!</div>
+    <a href="adminpanel.php">Terug naar Keuze Paneel</a>
 </div>
-
-<table>
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>Voornaam</th>
-            <th>Achternaam</th>
-            <th>Geboortedatum</th>
-            <th>Mailadres</th>
-            <th>Gebruikersnaam</th>
-            <th>Wachtwoord</th>
-            <th>Verwijderen</th>
-        </tr>
-    </thead>
+<div class="reisblok">
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Voornaam</th>
+                <th>Achternaam</th>
+                <th>Geboortedatum</th>
+                <th>Mailadres</th>
+                <th>Gebruikersnaam</th>
+                <th>Wachtwoord</th>
+                <th>Verwijderen</th>
+            </tr>
+        </thead>
+</div>
     <tbody>
         <?php
         $sql = "SELECT * FROM Klanteninformatie"; // Ensure this is the correct table name

@@ -15,13 +15,13 @@ $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $sql = "UPDATE Reizen SET Reisnaam = :Reisnaam, Omschrijving = :Omschrijving, Land = :Land, Stad = :Stad, Prijs = :Prijs, Tijdsduur = :Tijdsduur WHERE id = :id";
+    $sql = "UPDATE Reizen SET Reisnaam = :Reisnaam, Omschrijving = :Omschrijving, Personen = :Personen, Stad = :Stad, Prijs = :Prijs, Tijdsduur = :Tijdsduur WHERE id = :id";
     $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':Reisnaam', $_POST['Reisnaam']);
     $stmt->bindParam(':Omschrijving', $_POST['Omschrijving']);
-    $stmt->bindParam(':Land', $_POST['Land']);
+    $stmt->bindParam(':Personen', $_POST['Personen']);
     $stmt->bindParam(':Stad', $_POST['Stad']);
     $stmt->bindParam(':Prijs', $_POST['Prijs']);
     $stmt->bindParam(':Tijdsduur', $_POST['Tijdsduur']);
@@ -49,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="Omschrijving">Omschrijving:</label>
         <textarea name="Omschrijving" id="Omschrijving" required><?php echo htmlspecialchars($result['Omschrijving']); ?></textarea>
 
-        <label for="Land">Land:</label>
-        <input type="text" name="Land" id="Land" value="<?php echo htmlspecialchars($result['Land']); ?>" required>
+        <label for="Personen">Personen:</label>
+        <input type="text" name="Personen" id="Personen" value="<?php echo htmlspecialchars($result['Personen']); ?>" required>
 
         <label for="Stad">Stad:</label>
         <input type="text" name="Stad" id="Stad" value="<?php echo htmlspecialchars($result['Stad']); ?>" required>

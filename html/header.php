@@ -1,33 +1,45 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+// Databaseverbinding initialiseren
+include_once("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styling/style.css">
-    <title>Test Document</title>
+    <title>Petjet Reizen</title>
 </head>
 <body>
     <header>
-        <div class="logo">
-        <a href="index.php">
-                <img class="logo" src="img/logo-pet-jet-mini.png" alt="Reislogo">
-            </a>
-        </div>
-        <div class="top-content">
-            <div class="top-text">
-                <div><img class="check" src="img/check_green-small-icon.png" alt="CheckMark">Website van het jaar 1935</div>
-                <div><img class="check" src="img/check_green-small-icon.png" alt="CheckMark">Al meer dan 206 jaar ervaring</div>
-                <div><img class="check" src="img/check_green-small-icon.png" alt="CheckMark">€1600 Boekingskosten pp</div>
+        <nav>
+            <div class="headerbox">
+                <a href="index.php"><img class="logo" src="img/logo-pet-jet.png" alt="Logo"></a>
+                <div class="header">
+                    <a class="nav-item" href="overons.php">Over ons</a>
+                    <a class="nav-item" href="reizen.php">Reizen</a>
+                    <a class="nav-item" href="contact.php">Contact</a>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a class="nav-item" href="accountinfo.php">Mijn Account</a>
+                        <a class="nav-item" href="logout.php">Logout</a>
+                        <?php // Controleren of de gebruiker een admin is
+                        $stmt = $pdo->prepare("SELECT admin FROM Klanteninformatie WHERE id = ?");
+                        $stmt->execute([$_SESSION['user_id']]);
+                        $admin = $stmt->fetchColumn();
+                        if ($admin == 1): // Als de gebruiker een admin is
+                        ?>
+                            <a class="nav-item" href="adminpanel.php">Admin Panel</a>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <a class="nav-item" href="inlog.php">Login</a>
+                    <?php endif; ?>
+                </div>  
             </div>
-            <div class="buttons">
-                <button type="buttons" onclick="location.href='reizen.php';">Reizen</button>
-                <button type="buttons" onclick="location.href='overons.php';">Over ons</button>
-                <button type="buttons" onclick="location.href='contact.php';">Contact</button>
-            </div>
-        </div>
-        <div class="profile">
-            <button type="buttons" onclick="location.href='inlog.php';">Login</button>
-        </div>
+        </nav>
     </header>
 </body>
 </html>

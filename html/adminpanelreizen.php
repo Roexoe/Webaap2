@@ -1,10 +1,20 @@
 <?php
 session_start();
-?>
 
-<?php
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['user_id'])) {
+    header('Location: inlog.php');
+    exit();
+}
+
+// Controleer of de gebruiker een admin is
+if (!$_SESSION['admin']) {
+    header('Location: index.php');  // of waar je ook niet-admins wilt omleiden
+    exit();
+}
+
+include_once("header.php"); 
 include_once("connection.php");
-include_once("header.php");
 /**
  * @var PDO $pdo
  */
@@ -18,6 +28,8 @@ include_once("header.php");
     <title>Reizen Paneel</title>
 </head>
 <body>
+    <div class="margin"></div>
+    <div class="margin"></div>
     <h1>Reizen Paneel</h1>
     <a href="adminpanel.php">Terug naar Keuze Paneel</a>
 <div>
@@ -31,7 +43,7 @@ include_once("header.php");
             <th>id</th>
             <th>Reisnaam</th>
             <th>Omschrijving</th>
-            <th>Land</th>
+            <th>Personen</th>
             <th>Stad</th>
             <th>Prijs</th>
             <th>Tijdsduur</th>
@@ -49,7 +61,7 @@ include_once("header.php");
                 . "<td>" . $result['id'] . "</td>"
                 . "<td>" . $result['Reisnaam'] . "</td>"
                 . "<td>" . $result['Omschrijving'] . "</td>"
-                . "<td>" . $result['Land'] . "</td>"
+                . "<td>" . $result['Personen'] . "</td>"
                 . "<td>" . $result['Stad'] . "</td>"
                 . "<td>" . $result['Prijs'] . "</td>"
                 . "<td>" . $result['Tijdsduur'] . "</td>"

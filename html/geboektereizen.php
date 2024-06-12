@@ -1,52 +1,69 @@
+<?php
+session_start();
+
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['user_id'])) {
+    header('Location: inlog.php');
+    exit();
+}
+
+// Controleer of de gebruiker een admin is
+if (!$_SESSION['admin']) {
+    header('Location: index.php');  // of waar je ook niet-admins wilt omleiden
+    exit();
+}
+
+include_once("header.php"); 
+include_once("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klanten Paneel</title>
+    <title>Geboekte Reizen</title>
 </head>
 <body>
+    <div class="margin"></div>
+    <div class="margin"></div>
     <h1>Geboekte Reizen</h1>
     <a href="adminpanel.php">Terug naar Keuze Paneel</a>
-</div>
     <table border="1">
         <thead>
             <tr>
-                <th>Geboekte reis</th>
-                <th>Klant</th>
+                <th>Reisnaam</th>
+                <th>Prijs</th>
+                <th>Vertrekdatum</th>
+                <th>Terugkomstdatum</th>
+                <th>Voornaam</th>
+                <th>Achternaam</th>
+                <th>Mailadres</th>
+                <th>Actie</th>
             </tr>
         </thead>
         <tbody>
             <?php
             try {
-                // Verbinding maken met de database
-                $host = '172.18.0.2';
-                $db   = 'Klanteninformatie';
-                $user = 'root';
-                $pass = 'rootpassword';
-                $charset = 'utf8mb4';
-
-                $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-                $options = [
-                    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES   => false,
-                ];
-                $pdo = new PDO($dsn, $user, $pass, $options);
-
                 // Query om geboekte reizen en bijbehorende klantinformatie op te halen
-                $sql = "SELECT Reizen.Reisnaam, Reizen.Prijs, Klanteninformatie.Voornaam, Klanteninformatie.Achternaam
+                $sql = "SELECT Boekingen.id, Reizen.Reisnaam, Reizen.Prijs, Boekingen.vertrekdatum, Boekingen.terugkomstdatum, Klanteninformatie.Voornaam, Klanteninformatie.Achternaam, Klanteninformatie.Mailadres
                         FROM Boekingen
                         INNER JOIN Reizen ON Boekingen.reisID = Reizen.id
                         INNER JOIN Klanteninformatie ON Boekingen.klantID = Klanteninformatie.id";
-
                 $stmt = $pdo->query($sql);
 
                 // Loop door de resultaten en toon ze in de tabelrijen
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr>";
-                    echo "<td>" . $row["Reisnaam"] . " - " . $row["Prijs"] . "</td>";
-                    echo "<td>" . $row["Voornaam"] . " " . $row["Achternaam"] . "</td>";
+                    echo "<td>" . htmlspecialchars($row["Reisnaam"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["Prijs"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["vertrekdatum"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["terugkomstdatum"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["Voornaam"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["Achternaam"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["Mailadres"]) . "</td>";
+                    // Voeg een link toe om de boeking te verwijderen met het juiste boekings-ID
+                    echo "<td><a href='deleteboeking.php?id=" . $row['id'] . "'>Verwijderen</a></td>";
                     echo "</tr>";
                 }
             } catch (PDOException $e) {
@@ -57,3 +74,4 @@
     </table>
 </body>
 </html>
+            

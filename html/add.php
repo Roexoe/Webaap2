@@ -1,6 +1,47 @@
 <?php
+session_start();
+
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
 ob_start();
-include_once('connection.php'); // Ensure the path is correct to your PDO connection file
+include_once('connection.php'); // Zorg ervoor dat het pad correct is naar je PDO-verbinding bestand
+
+// Check of het formulier is verzonden
+if (isset($_POST['submit'])) {
+    // Ontvang de formuliergegevens
+    $reisnaam = $_POST['reisnaam'];
+    $omschrijving = $_POST['omschrijving'];
+    $personen = $_POST['personen'];
+    $stad = $_POST['stad'];
+    $prijs = $_POST['prijs'];
+    $tijdsduur = $_POST['tijdsduur'];
+    $reisfoto = $_POST['reisfoto'];
+
+    // Voorbereid en voer de SQL-query uit om de reis toe te voegen
+    $sql = "INSERT INTO Reizen (Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur, Reisfoto) VALUES (:reisnaam, :omschrijving, :personen, :stad, :prijs, :tijdsduur, :reisfoto)";
+    $stmt = $pdo->prepare($sql);
+    
+    // Uitvoeren van de query
+    if ($stmt->execute([
+        ':reisnaam' => $reisnaam,
+        ':omschrijving' => $omschrijving,
+        ':personen' => $personen,
+        ':stad' => $stad,
+        ':prijs' => $prijs,
+        ':tijdsduur' => $tijdsduur,
+        ':reisfoto' => $reisfoto // Opslaan van het opgegeven relatieve pad
+    ])) {
+        // Terug naar het admin paneel na succesvolle toevoeging
+        header('Location: adminpanelreizen.php');
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $pdo->errorInfo()[2]; // Gebruik $pdo->errorInfo() in plaats van $conn->error
+        exit();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -12,56 +53,30 @@ include_once('connection.php'); // Ensure the path is correct to your PDO connec
     <title>Add Reis</title>
 </head>
 <body>
-<?php
-// Check if the form has been submitted
-if (isset($_POST['submit'])) {
-    // Get the form data
-    $reisnaam = $_POST['reisnaam'];
-    $omschrijving = $_POST['omschrijving'];
-    $land = $_POST['land'];
-    $stad = $_POST['stad'];
-    $prijs = $_POST['prijs'];
-    $tijdsduur = $_POST['tijdsduur'];
+    <!-- Formulier om een nieuwe reis toe te voegen -->
+    <form action="add.php" method="post">
+        <label for="reisnaam">Reisnaam:</label>
+        <input type="text" name="reisnaam" id="reisnaam" required><br>
 
-    // Prepare and execute the SQL statement
-    $sql = "INSERT INTO Reizen (Reisnaam, Omschrijving, Land, Stad, Prijs, Tijdsduur) VALUES (:reisnaam, :omschrijving, :land, :stad, :prijs, :tijdsduur)";
-    $stmt = $pdo->prepare($sql);
-    
-    // Execute the query
-    if ($stmt->execute([
-        ':reisnaam' => $reisnaam,
-        ':omschrijving' => $omschrijving,
-        ':land' => $land,
-        ':stad' => $stad,
-        ':prijs' => $prijs,
-        ':tijdsduur' => $tijdsduur
-    ])) {
-        // Redirect back to the admin panel
-        header('Location: adminpanelreizen.php');
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>" . $pdo->errorInfo()[2]; // Use $pdo->errorInfo() instead of $conn->error
-        exit();
-    }
-}
-?>
+        <label for="omschrijving">Omschrijving:</label>
+        <textarea name="omschrijving" id="omschrijving" rows="4" cols="50" required></textarea><br>
 
-<!-- Form for adding a new reis -->
-<form action="add.php" method="post">
-    <label for="reisnaam">Reisnaam:</label>
-    <input type="text" name="reisnaam" id="reisnaam" required><br>
-    <label for="omschrijving">Omschrijving:</label>
-    <textarea name="omschrijving" id="omschrijving" rows="4" cols="50" required></textarea><br>
-    <label for="land">Land:</label>
-    <input type="text" name="land" id="land" required><br>
-    <label for="stad">Stad:</label>
-    <input type="text" name="stad" id="stad" required><br>
-    <label for="prijs">Prijs:</label>
-    <input type="number" step="0.01" name="prijs" id="prijs" required><br>
-    <label for="tijdsduur">Tijdsduur:</label>
-    <input type="text" name="tijdsduur" id="tijdsduur" required><br>
-    <input class="button" type="submit" name="submit" value="Opslaan" class="submit-button">
-</form>
-    
+        <label for="personen">Personen:</label>
+        <input type="text" name="personen" id="personen" required><br>
+
+        <label for="stad">Stad:</label>
+        <input type="text" name="stad" id="stad" required><br>
+
+        <label for="prijs">Prijs:</label>
+        <input type="number" step="0.01" name="prijs" id="prijs" required><br>
+
+        <label for="tijdsduur">Tijdsduur:</label>
+        <input type="text" name="tijdsduur" id="tijdsduur" required><br>
+
+        <label for="reisfoto">Relatief pad naar de foto:</label>
+        <input type="text" name="reisfoto" id="reisfoto" required><br>
+
+        <input type="submit" name="submit" value="Opslaan" class="button">
+    </form>
 </body>
 </html>
