@@ -1,11 +1,19 @@
 <?php
 session_start();
-
 include_once("connection.php");
-
 // Start output buffering
 ob_start();
 include_once("header.php");
+
+function emailExists($mailadres) {
+    global $pdo;
+    $sql = "SELECT id FROM Klanteninformatie WHERE mailadres = :mailadres";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':mailadres', $mailadres, PDO::PARAM_STR);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $user ? true : false;
+}
 
 // Controleer of het formulier is ingediend
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,18 +25,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $gebruikersnaam = $_POST['Gebruikersnaam'];
     $wachtwoord = $_POST['Wachtwoord'];
 
-    try {
-        // Bereid de SQL query voor
-   
-        $sql = "INSERT INTO Klanteninformatie (voornaam, achternaam, geboortedatum, mailadres, gebruikersnaam, wachtwoord, admin) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$voornaam, $achternaam, $geboortedatum, $mailadres, $gebruikersnaam, $wachtwoord, 0]);
-        // Stop output buffering en stuur de headers
-        ob_end_clean();
-        header('Location: inlog.php');
-        exit(); // Zorg ervoor dat het script stopt na het verzenden van de redirect
-    } catch (PDOException $e) {
-        echo "Fout: " . $e->getMessage();
+    if (emailExists($mailadres)) {
+        echo "<script>alert('Het opgegeven e-mailadres is al in gebruik. Kies een ander e-mailadres.');</script>";
+    } else {
+        try {
+            // Bereid de SQL query voor
+            $sql = "INSERT INTO Klanteninformatie (voornaam, achternaam, geboortedatum, mailadres, gebruikersnaam, wachtwoord, admin) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$voornaam, $achternaam, $geboortedatum, $mailadres, $gebruikersnaam, $wachtwoord, 0]);
+            // Stop output buffering en stuur de headers
+            ob_end_clean();
+            header('Location: inlog.php');
+            exit(); // Zorg ervoor dat het script stopt na het verzenden van de redirect
+        } catch (PDOException $e) {
+            echo "Fout: " . $e->getMessage();
+        }
     }
 } else {
     // Stop output buffering en stuur de headers
