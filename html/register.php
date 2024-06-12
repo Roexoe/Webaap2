@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         // Bereid de SQL query voor
-        $sql = "INSERT INTO Klanteninformatie (voornaam, achternaam, geboortedatum, mailadres, gebruikersnaam, wachtwoord) VALUES (?, ?, ?, ?, ?, ?)";
+   
+        $sql = "INSERT INTO Klanteninformatie (voornaam, achternaam, geboortedatum, mailadres, gebruikersnaam, wachtwoord, admin) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$voornaam, $achternaam, $geboortedatum, $mailadres, $gebruikersnaam, $wachtwoord]);
+        $stmt->execute([$voornaam, $achternaam, $geboortedatum, $mailadres, $gebruikersnaam, $wachtwoord, 0]);
         // Stop output buffering en stuur de headers
         ob_end_clean();
         header('Location: inlog.php');

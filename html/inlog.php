@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['inloggen'])) {
         if ($user && $wachtwoord === $user['Wachtwoord']) {  // Voor productie, gebruik wachtwoord hashing en verificatie
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['Gebruikersnaam'];
+            $_SESSION['admin'] = $user['admin'];
             header('Location: index.php');
             exit();
         } else {
@@ -54,12 +55,12 @@ ob_end_flush();
     <div class="flex-column">
     <label>Email </label></div>
     <div class="inputForm">
-    <input type="text" class="input" type="password" name="password" placeholder="Wachtwoord" required>
+    <input type="text" class= "input" name="username" placeholder="Gebruikersnaam" required>
     </div>
     <div class="flex-column">
     <label>Password </label></div>
     <div class="inputForm">
-    <input type="password" class="input" placeholder="Wachtwoord">
+    <input type="password" class= "input" name="password" placeholder="Wachtwoord" required>
     </div>
     <div class="flex-row">
     

@@ -1,7 +1,19 @@
 <?php
 session_start();
 
-include_once("header.php")
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['user_id'])) {
+    header('Location: inlog.php');
+    exit();
+}
+
+// Controleer of de gebruiker een admin is
+if (!$_SESSION['admin']) {
+    header('Location: index.php');  // of waar je ook niet-admins wilt omleiden
+    exit();
+}
+
+include_once("header.php"); 
 ?>
 
 <!DOCTYPE html>
