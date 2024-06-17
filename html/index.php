@@ -52,7 +52,7 @@ if ($stmt->rowCount() > 0) {
                                 <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
                                 <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
                                 <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
-                                <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
+                                <div class="reisprijs"><?= htmlspecialchars('€' . $result['Prijs']) ?></div>
                                 <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
                             </div>
                         </div>

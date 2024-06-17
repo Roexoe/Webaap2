@@ -2,22 +2,18 @@
 session_start();
 include_once("connection.php");
 include_once("header.php");
-
 /**
  * @var PDO $pdo
  */
-
 // Controleer of een reis-ID is opgegeven
 if (isset($_GET['id'])) {
     $reisId = $_GET['id'];
-
     // Haal reisgegevens op
-    $sql = "SELECT Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur FROM Reizen WHERE id = :id";
+    $sql = "SELECT Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur, reisfoto FROM Reizen WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id', $reisId, PDO::PARAM_INT);
     $stmt->execute();
     $reis = $stmt->fetch(PDO::FETCH_ASSOC);
-
     if (!$reis) {
         die("Reis niet gevonden.");
     }
@@ -84,6 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h1>Boek <?= htmlspecialchars($reis['Reisnaam']) ?></h1>
+    <img src="<?= htmlspecialchars($reis['reisfoto']) ?>" alt="Reis foto">
+    <p><?= htmlspecialchars($reis['Omschrijving']) ?></p>
+    <p>Aantal personen: <?= htmlspecialchars($reis['Personen']) ?></p>
+    <p>Stad: <?= htmlspecialchars($reis['Stad']) ?></p>
+    <p>Prijs: <?= htmlspecialchars('€' . $reis['Prijs']) ?></p>
+    <p>Tijdsduur: <?= htmlspecialchars($reis['Tijdsduur']) ?></p>
+    <!-- Rest van de code... -->
     <form action="" method="post">
         <input type="hidden" name="reis_id" value="<?= htmlspecialchars($reisId) ?>">
         <label for="voornaam">Voornaam:</label>
