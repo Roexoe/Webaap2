@@ -31,7 +31,7 @@ if ($stmt->rowCount() > 0) {
         <img src="img/Island_Heart.jpg" alt="Eiland">
         <div class="pagina-titel">
             Ontdek onze Wereld
-            <button class="button">Boek nu je reis</button>
+            <button class="button" onclick="window.location.href='reizen.php'">Boek nu je reis</button>
         </div>
     </div>
 
