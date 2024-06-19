@@ -49,12 +49,13 @@ if (isset($_GET['query'])) {
         <?php if (!empty($results)): ?>
             <?php foreach ($results as $result): ?>
     <div class="reisblok">
-        <div class="imgblok">
-            <?php if (!empty($result['Foto'])): ?>
-                <img width="100" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="Gerecht foto">
-            <?php endif; ?>
+
         </div>
         <div class="reisinfoblok">
+        <div class="imgblok">
+        <?php if (!empty($result['reisfoto'])): ?>
+            <img width="100" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="Reisfoto">
+        <?php endif; ?>
             <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
             <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
             <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>

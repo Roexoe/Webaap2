@@ -25,7 +25,7 @@ body {
 }
 .header {
     display: flex;
-    margin-left: 30%;
+    margin-left: 20%;
     align-items: center;
 }
 .nav-item {
