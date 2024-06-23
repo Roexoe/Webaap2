@@ -31,7 +31,7 @@ if ($stmt->rowCount() > 0) {
         <img src="img/Island_Heart.jpg" alt="Eiland">
         <div class="pagina-titel">
             Ontdek onze Wereld
-            <button class="button">Boek nu je reis</button>
+            <button class="button" onclick="window.location.href='reizen.php'">Boek nu je reis</button>
         </div>
     </div>
 
@@ -48,12 +48,12 @@ if ($stmt->rowCount() > 0) {
                                 <img width="500" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="Reisfoto">
                             <?php endif; ?>
                             <div class="reisinfoblok">
-                                <div class="reisinfoblokblok">
-                                    <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
-                                    <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
-                                    <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
-                                </div>
-                                <div class="reisprijs"><?= htmlspecialchars($result['Prijs']) ?></div>
+                                <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
+                                <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
+                                <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
+                                <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
+                                <div class="reisprijs"><?= htmlspecialchars('€' . $result['Prijs']) ?></div>
+                                <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 <?php
-$host = '172.19.0.2';
+$host = '172.20.0.3';
 
 $db   = 'Klanteninformatie';
 $user = 'root';

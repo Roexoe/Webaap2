@@ -2,22 +2,18 @@
 session_start();
 include_once("connection.php");
 include_once("header.php");
-
 /**
  * @var PDO $pdo
  */
-
 // Controleer of een reis-ID is opgegeven
 if (isset($_GET['id'])) {
     $reisId = $_GET['id'];
-
     // Haal reisgegevens op
-    $sql = "SELECT Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur FROM Reizen WHERE id = :id";
+    $sql = "SELECT Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur, reisfoto FROM Reizen WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id', $reisId, PDO::PARAM_INT);
     $stmt->execute();
     $reis = $stmt->fetch(PDO::FETCH_ASSOC);
-
     if (!$reis) {
         die("Reis niet gevonden.");
     }
@@ -84,6 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h1>Boek <?= htmlspecialchars($reis['Reisnaam']) ?></h1>
+    <img src="<?= htmlspecialchars($reis['reisfoto']) ?>" alt="Reis foto">
+    <p><?= htmlspecialchars($reis['Omschrijving']) ?></p>
+    <p>Aantal personen: <?= htmlspecialchars($reis['Personen']) ?></p>
+    <p>Stad: <?= htmlspecialchars($reis['Stad']) ?></p>
+    <p>Prijs: <?= htmlspecialchars('€' . $reis['Prijs']) ?></p>
+    <p>Tijdsduur: <?= htmlspecialchars($reis['Tijdsduur'] . ' dagen') ?></p>
+    <!-- Rest van de code... -->
     <form action="" method="post">
         <input type="hidden" name="reis_id" value="<?= htmlspecialchars($reisId) ?>">
         <label for="voornaam">Voornaam:</label>
@@ -104,5 +107,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" id="wachtwoord" name="Wachtwoord" required>
         <input type="submit" value="Boek">
     </form>
+    <script>
+    window.onload = function() {
+        var vertrekdatum = document.getElementById('Vertrekdatum');
+        var terugkomstdatum = document.getElementById('Terugkomstdatum');
+        var tijdsduur = <?= $reis['Tijdsduur'] ?>; // Haal de tijdsduur uit de PHP variabele
+
+        // Zet de minimale vertrekdatum op 2 weken vanaf vandaag
+        var vandaag = new Date();
+        var minVertrekdatum = new Date();
+        minVertrekdatum.setDate(vandaag.getDate() + 14);
+        vertrekdatum.min = minVertrekdatum.toISOString().split('T')[0];
+
+        // Wanneer de vertrekdatum verandert, stel de terugkomstdatum in op de vertrekdatum plus de tijdsduur
+        vertrekdatum.onchange = function() {
+            var vertrek = new Date(vertrekdatum.value);
+            var terugkomst = new Date(vertrek);
+            terugkomst.setDate(vertrek.getDate() + tijdsduur);
+            terugkomstdatum.value = terugkomst.toISOString().split('T')[0];
+        };
+    };
+</script>
 </body>
 </html>
