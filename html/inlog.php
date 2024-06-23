@@ -53,7 +53,7 @@ ob_end_flush();
   <div class="inlog-box">
     <form class="form" name="login" action="inlog.php" method="post">
     <div class="flex-column">
-    <label>Email </label></div>
+    <label>Gebruikersnaam </label></div>
     <div class="inputForm">
     <input type="text" class= "input" name="username" placeholder="Gebruikersnaam" required>
     </div>
