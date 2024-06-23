@@ -1,7 +1,7 @@
 <?php
 $host = '172.20.0.3';
 
-$db   = 'Klanteninformatie';
+$db   = 'Klanteninformatie.';
 $user = 'root';
 $pass = 'rootpassword';
 $charset = 'utf8mb4';
