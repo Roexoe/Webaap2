@@ -58,7 +58,7 @@ if (isset($_GET['query'])) {
         <?php endif; ?>
             <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
             <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
-            <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
+            <div class="reisland"><?= htmlspecialchars($result['Personen']. ' personen') ?></div>
             <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
             <div class="reisprijs"><?= htmlspecialchars('€' . $result['Prijs']) ?></div>
             <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur'] . ' dagen' ) ?></div>
@@ -73,44 +73,7 @@ if (isset($_GET['query'])) {
     </div>
 </div>
 
-<div class="container-center">
-    <div class="container-1">
-        <div>
-            <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
-            <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
-            <?php if (!empty($result['reisfoto'])): ?>
-                <img width="500" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="Reisfoto">
-            <?php endif; ?>
-            <div class="rating">
-                <div class="rating-score">8,3</div>
-                <div class="reisprijs"><?= htmlspecialchars($result['Prijs'] . " 	€") ?></div>
-            </div>
-        </div>
-        <div class="details">
-            <div class="features">
-                <div class="feature">
-                    <div class="checkmark"></div>
-                    <div class="reispersonen"><?= htmlspecialchars($result['Personen'] . " Personen") ?></div>
-                </div>
-                <div class="feature">
-                    <div class="checkmark"></div>
-                    <div>Direct aan een heerlijk strand!</div>
-                </div>
-                <div class="feature">
-                    <div class="checkmark"></div>
-                    <div>Een paradijs voor kinderen</div>
-                </div>
-                <div class="feature">
-                    <div class="checkmark"></div>
-                    <div>Genieten aan de zwembaden</div>
-                </div>
-            </div>
-            <div class="button">
-                <button>Zeer goed</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 </body>
 </html>
 </body>
