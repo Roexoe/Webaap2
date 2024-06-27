@@ -50,10 +50,10 @@ if ($stmt->rowCount() > 0) {
                             <div class="reisinfoblok">
                                 <div class="reisnaam"><?= htmlspecialchars($result['Reisnaam']) ?></div>
                                 <div class="reisomschrijving"><?= htmlspecialchars($result['Omschrijving']) ?></div>
-                                <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
+                                <div class="reisland"><?= htmlspecialchars($result['Personen']. ' personen') ?></div>
                                 <div class="reisstad"><?= htmlspecialchars($result['Stad']) ?></div>
                                 <div class="reisprijs"><?= htmlspecialchars('€' . $result['Prijs']) ?></div>
-                                <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
+                                <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur'] . ' dagen') ?></div>
                             </div>
                         </div>
                     </div>

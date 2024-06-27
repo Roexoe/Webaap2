@@ -20,7 +20,6 @@ if (isset($_GET['id'])) {
 } else {
     die("Geen reis-ID opgegeven.");
 }
-
 // Controleer of het formulier is ingediend
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $voornaam = $_POST['Voornaam'];
@@ -31,9 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $terugkomstdatum = $_POST['Terugkomstdatum'];
     $gebruikersnaam = $_POST['Gebruikersnaam'];
     $wachtwoord = $_POST['Wachtwoord'];
-
     // Voeg hier de verwerking van het formulier toe, bijvoorbeeld het opslaan van de gegevens in de database
-
     // Hieronder een voorbeeld van hoe je de gegevens zou kunnen verwerken
     try {
         // Controleer eerst of de klant al bestaat in de Klanteninformatie tabel
@@ -45,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':wachtwoord', $wachtwoord, PDO::PARAM_STR);
         $stmt->execute();
         $klant = $stmt->fetch(PDO::FETCH_ASSOC);
-
         if (!$klant) {
             // De klant bestaat niet, stuur de gebruiker door naar het registratiepagina
             echo "<script>alert('Je hebt volgens ons systeem nog geen account. Je wordt doorverwezen naar het registratieformulier.'); window.location.href='register.php';</script>"; 
@@ -53,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $klantId = $klant['id'];
         }
-
         // Voeg boeking toe aan de Boekingen tabel
         $sql = "INSERT INTO Boekingen (reisID, klantID, vertrekdatum, terugkomstdatum) 
                 VALUES (:reisID, :klantID, :vertrekdatum, :terugkomstdatum)";
@@ -63,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':vertrekdatum', $vertrekdatum, PDO::PARAM_STR);
         $stmt->bindParam(':terugkomstdatum', $terugkomstdatum, PDO::PARAM_STR);
         $stmt->execute();
-
         echo "Boeking succesvol!";
     } catch (PDOException $e) {
         echo "Er is een fout opgetreden bij het boeken: " . $e->getMessage();
@@ -86,7 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p>Stad: <?= htmlspecialchars($reis['Stad']) ?></p>
     <p>Prijs: <?= htmlspecialchars('€' . $reis['Prijs']) ?></p>
     <p>Tijdsduur: <?= htmlspecialchars($reis['Tijdsduur'] . ' dagen') ?></p>
-    <!-- Rest van de code... -->
     <form action="" method="post">
         <input type="hidden" name="reis_id" value="<?= htmlspecialchars($reisId) ?>">
         <label for="voornaam">Voornaam:</label>
@@ -107,18 +100,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" id="wachtwoord" name="Wachtwoord" required>
         <input type="submit" value="Boek">
     </form>
+    <form action="addreview.php" method="get">
+        <input type="hidden" name="ReisID" value="<?= htmlspecialchars($reisId); ?>">
+        <button type="submit">Laat een review achter</button>
+    </form>
+    <?php
+// Controleer of er een reis-ID is
+if (isset($reisId)) {
+    // SQL-query om reviews op te halen
+    $sql = "SELECT Voornaam, Achternaam, Email, Telefoonnummer, Bericht FROM Review WHERE ReisID = :reisID";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':reisID', $reisId, PDO::PARAM_INT);
+    $stmt->execute();
+    $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($reviews) {
+        echo "<h2>Reviews</h2>";
+        foreach ($reviews as $review) {
+            echo "<div class='review'>";
+            echo "<h3>Naam: " . htmlspecialchars($review['Voornaam']) . " " . htmlspecialchars($review['Achternaam']) . "</h3>";
+            echo "<p><strong>Review</strong> " . htmlspecialchars($review['Bericht']) . "</p>";
+            echo "</div>";
+        }
+    } else {
+        echo "<p>Er zijn nog geen reviews voor deze reis.</p>";
+    }
+}
+?>
     <script>
     window.onload = function() {
         var vertrekdatum = document.getElementById('Vertrekdatum');
         var terugkomstdatum = document.getElementById('Terugkomstdatum');
         var tijdsduur = <?= $reis['Tijdsduur'] ?>; // Haal de tijdsduur uit de PHP variabele
-
         // Zet de minimale vertrekdatum op 2 weken vanaf vandaag
         var vandaag = new Date();
         var minVertrekdatum = new Date();
         minVertrekdatum.setDate(vandaag.getDate() + 14);
         vertrekdatum.min = minVertrekdatum.toISOString().split('T')[0];
-
         // Wanneer de vertrekdatum verandert, stel de terugkomstdatum in op de vertrekdatum plus de tijdsduur
         vertrekdatum.onchange = function() {
             var vertrek = new Date(vertrekdatum.value);
@@ -127,6 +145,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             terugkomstdatum.value = terugkomst.toISOString().split('T')[0];
         };
     };
-</script>
+    </script>
 </body>
 </html>
