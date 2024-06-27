@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <div class="container">
-  <img src="img/register-img.jpg" alt="register" class="background-image">
+  <img src="img/hond-mee-op-vakantie.jpg" alt="register" class="background-image">
   <div class="text-over-image">
     <form class="form" name="register" action="register.php" method="post">
     <label>Register </label>

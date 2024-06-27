@@ -48,7 +48,7 @@ ob_end_flush();
 <!--<script src="cookie.js"></script>-->
 
 <div class="container">
-  <img src="img/inlog-img.jpg" alt="inlog" class="background-image">
+  <img src="img/login-img.jpg" alt="inlog" class="background-image">
   <div class="text-over-image">
   <div class="inlog-box">
     <form class="form" name="login" action="inlog.php" method="post">

@@ -28,7 +28,7 @@ if ($stmt->rowCount() > 0) {
 </head>
 <body>
     <div class="pagina-titelbox">
-        <img src="img/Island_Heart.jpg" alt="Eiland">
+        <img src="img/index-foto.jpg" alt="hond">
         <div class="pagina-titel">
             Ontdek onze Wereld
             <button class="button" onclick="window.location.href='reizen.php'">Boek nu je reis</button>
@@ -62,8 +62,8 @@ if ($stmt->rowCount() > 0) {
             <?php else: ?>
                 <p>Geen reizen gevonden.</p>
             <?php endif; ?>
-            <button class="button" onclick="window.location.href='reizen.php'">Kies uw reis</button>
         </div>
+        <button class="button" onclick="window.location.href='reizen.php'">Kies uw reis</button>
     </div>
 
     <div class="pagina-titelbox">

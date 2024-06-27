@@ -12,10 +12,10 @@
             <div class="footerbox">
                 <a href="index.html"><img class="logo" src="img/logo-pet-jet.png" alt="Logo"></a>
                 <div class="footer">
-                    <a href="index.php">Home</a>
-                    <a href="about.php">About</a>
-                    <a href="contact.php">Contact</a>
-                    <a href="privacybeleid.php">Privacybeleid</a>
+                    <a class="tekst-footer" href="index.php">Home</a>
+                    <a class="tekst-footer" href="about.php">About</a>
+                    <a class="tekst-footer" href="contact.php">Contact</a>
+                    <a class="tekst-footer" href="privacybeleid.php">Privacybeleid</a>
                 </div>  
             </div>
         </nav>

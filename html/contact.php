@@ -31,7 +31,7 @@ if(isset($_POST['submit'])) {
 <body>
     <div class="margin"></div>
     <div class="container">
-  <img src="img/overonsoceaan.jpg" alt="Overons" class="background-image">
+  <img src="img/hond-strand.jpeg" alt="Overons" class="background-image">
   <div class="text-over-image">
     <div class="tekstblokblok">
     <div class="contact-titel">Contact</div>

@@ -14,7 +14,7 @@ include_once("header.php");
 </head>
 <body>
 <div class="container">
-  <img src="img/overonsoceaan.jpg" alt="Overons" class="background-image">
+  <img src="img/witteherder.jpg" alt="Overons" class="background-image">
   <div class="text-over-image">
     <div class="tekstblokblok">
       <div class="margin"></div>
