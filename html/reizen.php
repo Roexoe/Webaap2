@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 include_once("connection.php");
 include_once("header.php");
 
@@ -13,7 +12,7 @@ include_once("header.php");
 if (isset($_GET['query'])) {
     // Zoekopdracht uitvoeren
     $query = '%' . $_GET['query'] . '%';
-    $sql = "SELECT id, Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur FROM Reizen WHERE Reisnaam LIKE :query_reisnaam OR Omschrijving LIKE :query_omschrijving OR Personen LIKE :query_Personen OR Stad LIKE :query_stad";
+    $sql = "SELECT id, Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur, reisfoto FROM Reizen WHERE Reisnaam LIKE :query_reisnaam OR Omschrijving LIKE :query_omschrijving OR Personen LIKE :query_Personen OR Stad LIKE :query_stad";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':query_reisnaam', $query, PDO::PARAM_STR);
     $stmt->bindParam(':query_omschrijving', $query, PDO::PARAM_STR);
@@ -24,7 +23,7 @@ if (isset($_GET['query'])) {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
     // Geen zoekopdracht, haal alle reizen op
-    $sql = "SELECT id, Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur FROM Reizen";
+    $sql = "SELECT id, Reisnaam, Omschrijving, Personen, Stad, Prijs, Tijdsduur, reisfoto FROM Reizen";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -49,12 +48,13 @@ if (isset($_GET['query'])) {
         <?php if (!empty($results)): ?>
             <?php foreach ($results as $result): ?>
                 <div class="reisblok">
-                    <div class="imgblok">
+                    <div class="imgblok-reizen">
                         <?php if (!empty($result['reisfoto'])): ?>
-                            <img width="500" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="Reisfoto">
+                            <img width="400" src="<?= htmlspecialchars($result['reisfoto']) ?>" alt="reisfoto">
                         <?php endif; ?>
-                        <div class="reisinfoblok">
-                            <div class="details">
+                    </div>
+                    <div class="reisinfoblok">
+                        <div class="details">
                             <div class="features">
                                 <div class="feature">
                                     <div class="checkmark"></div>
@@ -62,7 +62,7 @@ if (isset($_GET['query'])) {
                                 </div>
                                 <div class="feature">
                                     <div class="checkmark"></div>
-                                    <div class="reisland"><?= htmlspecialchars($result['Personen']) ?></div>
+                                    <div class="reisland"><?= htmlspecialchars($result['Personen'] . ' Personen') ?></div>
                                 </div>
                                 <div class="feature">
                                     <div class="checkmark"></div>
@@ -70,15 +70,16 @@ if (isset($_GET['query'])) {
                                 </div>
                                 <div class="feature">
                                     <div class="checkmark"></div>
-                                    <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur']) ?></div>
+                                    <div class="reistijdsduur"><?= htmlspecialchars($result['Tijdsduur'] . ' Dagen') ?></div>
                                 </div>
                             </div>
+                            <div class="book-now">
+                                <a href="boek.php?id=<?= $result['id'] ?>" class="button">Book Now</a>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
-  <?php endforeach; ?>
-
+            <?php endforeach; ?>
         <?php else: ?>
             <p>Geen reizen gevonden.</p>
         <?php endif; ?>
@@ -87,7 +88,5 @@ if (isset($_GET['query'])) {
 <?php
 include_once("footer.php");
 ?>
-</body>
-</html>
 </body>
 </html>

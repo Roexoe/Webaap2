@@ -139,7 +139,14 @@ body {
     height: auto;
     object-fit: cover;
   }
-  
+
+  .imgblok-reizen {
+    margin: 10px;
+    border-radius: 10px ;
+    width: 40%;
+    height: 100%;
+    
+  }
   /* Style the card content */
   .reis-content {
     padding: 15px;
